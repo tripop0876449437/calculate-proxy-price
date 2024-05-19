@@ -676,15 +676,15 @@
         </div>
         <div id="informationIPv4Full" class="mt-6 text-white border border-stone-600 rounded-[5px] p-2 h-[350px]"
             bis_skin_checked="3" style="max-height: 350px; overflow-y: auto;">
-            <div id="informationIPv4" class="">
-                <p>HTTPS: XXXXX</p>
-                <p>xxxx.xxxx.xxxx.xxxx:xxxxx:xxxxxxxx:xxxxxxxx</p>
-                <p>SOCKS5: XXXXX</p>
-                <p>xxxx.xxxx.xxxx.xxxx:xxxxx:xxxxxxxx:xxxxxxxx</p>
-            </div>
             <div id="patternIPv4">
                 <p>Pattern: </p>
                 <p>xxxx:xxxx:xxxx:xxxx</p>
+            </div><br>
+            <div id="informationIPv4" class="">
+                <p>HTTP(s): XXXXX</p>
+                <p>xxxx.xxxx.xxxx.xxxx:xxxxx:xxxxxxxx:xxxxxxxx</p>
+                <p>SOCKS5: XXXXX</p>
+                <p>xxxx.xxxx.xxxx.xxxx:xxxxx:xxxxxxxx:xxxxxxxx</p>
             </div>
         </div>
         <button onclick="copyToClipboardGenerateIPv4()"
@@ -746,7 +746,7 @@
             let outputPatternIPv4 = `
             <div>
                 <p>Pattern: </p>
-                <p>server:port:username:password</p>
+                <p>Server:Port:Username:Password</p>
             </div>
             `;
 
