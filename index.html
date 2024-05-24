@@ -617,8 +617,18 @@
         <h2 class="text-2xl font-bold border-b border-amber-700 pb-3 text-white text-center">IPv4</h2>
         <h2 class="text-xl font-bold border-b border-amber-700 py-3 text-white">Proxy Price Calculator</h2>
         <div class="mt-4" bis_skin_checked="1">
-            <label for="totalVat" class="block text-amber-400 font-semibold">ใส่ราคารวม Vat</label>
+            <label for="totalIPv4" class="block text-amber-400 font-semibold">ใส่ราคารวม Vat</label>
+            <input type="number" id="totalIPv4" name="totalIPv4" min="1"
+                class="mt-1 p-2 w-full rounded-md bg-amber-700 text-white outline-none border border-amber-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+        </div>
+        <div class="mt-4" bis_skin_checked="1">
+            <label for="totalVat" class="block text-amber-400 font-semibold">ใส่จำนวน IPs</label>
             <input type="number" id="totalVat" name="totalVat" min="1"
+                class="mt-1 p-2 w-full rounded-md bg-amber-700 text-white outline-none border border-amber-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+        </div>
+        <div class="mt-4" bis_skin_checked="1">
+            <label for="quantityDay" class="block text-amber-400 font-semibold">ใส่อายุการใช้งาน</label>
+            <input type="number" id="quantityDay" name="quantityDay" min="1"
                 class="mt-1 p-2 w-full rounded-md bg-amber-700 text-white outline-none border border-amber-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
         </div>
         <div class="mt-4" bis_skin_checked="1">
@@ -626,10 +636,10 @@
                 class="px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
         </div>
         <div id="totalData" class="mt-6 text-white border border-amber-600 rounded-[5px] p-2" bis_skin_checked="1">
-            <p id="totalVatText" class="text-lg font-semibold">แจ้งยอดชำระรวม Vat XXX฿</p>
-            <p id="vatText1" class="mt-2">VAT 7% = XX.XX฿</p>
+            <p id="totalVatText" class="text-lg font-semibold">ราคารวม: XXX฿</p>
             <p class="mt-2">--------------------------------------</p>
-            <p id="IPPriceText">ราคา IP = XXX.XX฿</p>
+            <p id="IPPriceText">ราคาแต่ละIP: XXX.XX฿</p>
+            <p id="vatText1" class="mt-2">วันหมดอายุ: YYYYMMDD=>YYYYMMDD</p>
         </div>
         <button onclick="copyToClipboard()"
             class="px-2 py-1 bg-green-500 mt-5 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">COPY</button>
@@ -695,18 +705,32 @@
 
     <script>
         function calculatePriceIPv4() {
+            const numTotalVatInput = document.getElementById("totalIPv4");
             const numIPsInput = document.getElementById("totalVat");
+            const numDayInput = document.getElementById("quantityDay");
             const numIPs = numIPsInput.value;
-            const vat = numIPs * 0.07;
-            const totalPrice = numIPs - vat;
-            const formattedTotalPrice = totalPrice.toLocaleString();
-            const formattedVat = vat.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            const formattedTotalPriceWithVAT = totalPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const numDay = parseInt(numDayInput.value, 10); // Ensure the input is an integer
+            const numTotalVat = parseInt(numTotalVatInput.value, 10);
+            const currentDate = new Date();
+            const futureDate = new Date();
 
-            document.getElementById("totalVatText").innerText = `แจ้งยอดชำระรวม Vat ${numIPs}฿`;
-            document.getElementById("vatText1").innerText = `VAT 7% = ${formattedVat}฿`;
-            // document.getElementById("totalText").innerText = `ราคารวม VAT = ${formattedTotalPriceWithVAT}฿`;
-            document.getElementById("IPPriceText").innerText = `ราคา IP = ${formattedTotalPrice}฿`;
+            futureDate.setDate(currentDate.getDate() + numDay);
+
+            const currentYear = String(currentDate.getFullYear());
+            const currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Month is zero-indexed
+            const currentDay = ('0' + currentDate.getDate()).slice(-2);
+            const currentDated = currentYear+currentMonth+currentDay;
+            const futureYear = String(futureDate.getFullYear());
+            const futureMonth = ('0' + (futureDate.getMonth() + 1)).slice(-2); // Month is zero-indexed
+            const futureDay = ('0' + futureDate.getDate()).slice(-2);
+            const futureDated = futureYear+futureMonth+futureDay
+
+            const formattedTotalPrice = (numTotalVat / numIPs).toFixed(2)
+            const exp = currentDated+"=>"+futureDated;
+
+            document.getElementById("totalVatText").innerText = `ราคารวม: ${numTotalVat}฿`;
+            document.getElementById("IPPriceText").innerText = `ราคาแต่ละIP: ${formattedTotalPrice}฿`;
+            document.getElementById("vatText1").innerText = `วันหมดอายุ: ${exp}`;
         }
 
         function calculatePriceIPv6() {
