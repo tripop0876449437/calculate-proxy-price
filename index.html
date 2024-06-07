@@ -615,8 +615,8 @@
     <!-- Calculation IPv4 -->
     <div class="p-6 bg-amber-800 backdrop-blur-lg border border-amber-700 rounded-lg shadow-xl" bis_skin_checked="1">
         <h2 class="text-2xl font-bold border-b border-amber-700 pb-3 text-white text-center">IPv4</h2>
-        <h2 class="text-xl font-bold border-b border-amber-700 py-3 text-white">Proxy Price Calculator</h2>
-        <div class="mt-4" bis_skin_checked="1">
+        <h2 class="text-xl font-bold border-b border-amber-700 py-3 text-white">Calculator Proxy Date</h2>
+        <!-- <div class="mt-4" bis_skin_checked="1">
             <label for="totalIPv4" class="block text-amber-400 font-semibold">ใส่ราคารวม Vat</label>
             <input type="number" id="totalIPv4" name="totalIPv4" min="1"
                 class="mt-1 p-2 w-full rounded-md bg-amber-700 text-white outline-none border border-amber-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
@@ -625,7 +625,7 @@
             <label for="totalVat" class="block text-amber-400 font-semibold">ใส่จำนวน IPs</label>
             <input type="number" id="totalVat" name="totalVat" min="1"
                 class="mt-1 p-2 w-full rounded-md bg-amber-700 text-white outline-none border border-amber-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-        </div>
+        </div> -->
         <div class="mt-4" bis_skin_checked="1">
             <label for="quantityDay" class="block text-amber-400 font-semibold">ใส่อายุการใช้งาน</label>
             <input type="number" id="quantityDay" name="quantityDay" min="1"
@@ -636,9 +636,9 @@
                 class="px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
         </div>
         <div id="totalData" class="mt-6 text-white border border-amber-600 rounded-[5px] p-2" bis_skin_checked="1">
-            <p id="totalVatText" class="text-lg font-semibold">ราคารวม: XXX฿</p>
+            <!-- <p id="totalVatText" class="text-lg font-semibold">ราคารวม: XXX฿</p>
             <p class="mt-2">--------------------------------------</p>
-            <p id="IPPriceText">ราคาแต่ละIP: XXX.XX฿</p>
+            <p id="IPPriceText">ราคาแต่ละIP: XXX.XX฿</p> -->
             <p id="vatText1" class="mt-2">วันหมดอายุ: YYYYMMDD=>YYYYMMDD</p>
         </div>
         <button onclick="copyToClipboard()"
@@ -705,12 +705,12 @@
 
     <script>
         function calculatePriceIPv4() {
-            const numTotalVatInput = document.getElementById("totalIPv4");
-            const numIPsInput = document.getElementById("totalVat");
+            // const numTotalVatInput = document.getElementById("totalIPv4");
+            // const numIPsInput = document.getElementById("totalVat");
             const numDayInput = document.getElementById("quantityDay");
-            const numIPs = numIPsInput.value;
+            // const numIPs = numIPsInput.value;
             const numDay = parseInt(numDayInput.value, 10); // Ensure the input is an integer
-            const numTotalVat = parseInt(numTotalVatInput.value, 10);
+            // const numTotalVat = parseInt(numTotalVatInput.value, 10);
             const currentDate = new Date();
             const futureDate = new Date();
 
@@ -725,11 +725,11 @@
             const futureDay = ('0' + futureDate.getDate()).slice(-2);
             const futureDated = futureYear+futureMonth+futureDay
 
-            const formattedTotalPrice = (numTotalVat / numIPs).toFixed(2)
+            // const formattedTotalPrice = (numTotalVat / numIPs).toFixed(2)
             const exp = currentDated+"=>"+futureDated;
 
-            document.getElementById("totalVatText").innerText = `ราคารวม: ${numTotalVat}฿`;
-            document.getElementById("IPPriceText").innerText = `ราคาแต่ละIP: ${formattedTotalPrice}฿`;
+            // document.getElementById("totalVatText").innerText = `ราคารวม: ${numTotalVat}฿`;
+            // document.getElementById("IPPriceText").innerText = `ราคาแต่ละIP: ${formattedTotalPrice}฿`;
             document.getElementById("vatText1").innerText = `วันหมดอายุ: ${exp}`;
         }
 
