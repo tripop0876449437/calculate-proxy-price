@@ -613,19 +613,9 @@
     bis_skin_checked="1">
 
     <!-- Calculation IPv4 -->
-    <div class="p-6 bg-amber-800 backdrop-blur-lg border border-amber-700 rounded-lg shadow-xl" bis_skin_checked="1">
+    <!-- <div class="p-6 bg-amber-800 backdrop-blur-lg border border-amber-700 rounded-lg shadow-xl" bis_skin_checked="1">
         <h2 class="text-2xl font-bold border-b border-amber-700 pb-3 text-white text-center">IPv4</h2>
         <h2 class="text-xl font-bold border-b border-amber-700 py-3 text-white">Calculator Proxy Date</h2>
-        <!-- <div class="mt-4" bis_skin_checked="1">
-            <label for="totalIPv4" class="block text-amber-400 font-semibold">ใส่ราคารวม Vat</label>
-            <input type="number" id="totalIPv4" name="totalIPv4" min="1"
-                class="mt-1 p-2 w-full rounded-md bg-amber-700 text-white outline-none border border-amber-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-        </div>
-        <div class="mt-4" bis_skin_checked="1">
-            <label for="totalVat" class="block text-amber-400 font-semibold">ใส่จำนวน IPs</label>
-            <input type="number" id="totalVat" name="totalVat" min="1"
-                class="mt-1 p-2 w-full rounded-md bg-amber-700 text-white outline-none border border-amber-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-        </div> -->
         <div class="mt-4" bis_skin_checked="1">
             <label for="quantityDay" class="block text-amber-400 font-semibold">ใส่อายุการใช้งาน</label>
             <input type="number" id="quantityDay" name="quantityDay" min="1"
@@ -636,14 +626,11 @@
                 class="px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
         </div>
         <div id="totalData" class="mt-6 text-white border border-amber-600 rounded-[5px] p-2" bis_skin_checked="1">
-            <!-- <p id="totalVatText" class="text-lg font-semibold">ราคารวม: XXX฿</p>
-            <p class="mt-2">--------------------------------------</p>
-            <p id="IPPriceText">ราคาแต่ละIP: XXX.XX฿</p> -->
             <p id="vatText1" class="mt-2">วันหมดอายุ: YYYYMMDD=>YYYYMMDD</p>
         </div>
         <button onclick="copyToClipboard()"
             class="px-2 py-1 bg-green-500 mt-5 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">COPY</button>
-    </div>
+    </div> -->
 
     <!-- Calcultion IPv6 -->
     <div class="p-6 bg-gray-800 backdrop-blur-lg border border-gray-700 rounded-lg shadow-xl" bis_skin_checked="2">
@@ -670,7 +657,7 @@
     </div>
 
     <!-- Generate IPv4 -->
-    <div class="p-6 bg-stone-800 backdrop-blur-lg border border-stone-700 rounded-lg shadow-xl w-[1000px] h-full relative"
+    <div class="p-6 bg-stone-800 backdrop-blur-lg border border-stone-700 rounded-lg shadow-xl w-[1000px] relative"
         bis_skin_checked="3">
         <h2 class="text-2xl font-bold border-b border-stone-700 pb-3 text-white text-center">IPv4</h2>
         <h2 class="text-xl font-bold border-b border-stone-700 py-3 text-white">Proxy IPv4 Generate</h2>
@@ -681,8 +668,24 @@
             </textarea>
         </div>
         <div class="mt-4" bis_skin_checked="3">
-            <button onclick="GenerateIPv4()"
-                class="px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
+            <label for="quantityDay" class="block text-stone-400 font-semibold">ใส่จำนวนวันหมดอายุ</label>
+            <div class="mt-1 mb-7 flex items-center gap-10 bg-stone-700 p-2 rounded-md">
+                <input type="number" id="quantityDay" name="quantityDay" min="1"
+                    class="p-2 h-10 w-60 rounded-md bg-stone-700 text-white outline-none border border-stone-500 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                <div class="px-10 border-stone-600 border-x-4">
+                    <div id="totalData" class="text-white border border-stone-500 rounded-[5px] p-2"
+                        bis_skin_checked="3">
+                        <!-- <p id="totalVatText" class="text-lg font-semibold">ราคารวม: XXX฿</p>
+                    <p class="mt-2">--------------------------------------</p>
+                    <p id="IPPriceText">ราคาแต่ละIP: XXX.XX฿</p> -->
+                        <p>วันหมดอายุ: <span id="vatText1">YYYYMMDD=>YYYYMMDD</span></p>
+                    </div>
+                </div>
+                <button onclick="copyToClipboard()"
+                    class="px-2 py-1 bg-lime-500 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">COPY</button>
+            </div>
+            <button onclick="calculateIPv4()"
+                class="px-4 py-2 bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-4 focus:ring-violet-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
         </div>
         <div id="informationIPv4Full" class="mt-6 text-white border border-stone-600 rounded-[5px] p-2 h-[350px]"
             bis_skin_checked="3" style="max-height: 350px; overflow-y: auto;">
@@ -698,7 +701,7 @@
             </div>
         </div>
         <button onclick="copyToClipboardGenerateIPv4()"
-            class="px-2 py-1 bg-green-500 mt-5 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">
+            class="px-2 py-1 bg-lime-500 mt-5 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">
             COPY
         </button>
     </div>
@@ -719,18 +722,18 @@
             const currentYear = String(currentDate.getFullYear());
             const currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Month is zero-indexed
             const currentDay = ('0' + currentDate.getDate()).slice(-2);
-            const currentDated = currentYear+currentMonth+currentDay;
+            const currentDated = currentYear + currentMonth + currentDay;
             const futureYear = String(futureDate.getFullYear());
             const futureMonth = ('0' + (futureDate.getMonth() + 1)).slice(-2); // Month is zero-indexed
             const futureDay = ('0' + futureDate.getDate()).slice(-2);
-            const futureDated = futureYear+futureMonth+futureDay
+            const futureDated = futureYear + futureMonth + futureDay
 
             // const formattedTotalPrice = (numTotalVat / numIPs).toFixed(2)
-            const exp = currentDated+"=>"+futureDated;
+            const exp = currentDated + "=>" + futureDated;
 
             // document.getElementById("totalVatText").innerText = `ราคารวม: ${numTotalVat}฿`;
             // document.getElementById("IPPriceText").innerText = `ราคาแต่ละIP: ${formattedTotalPrice}฿`;
-            document.getElementById("vatText1").innerText = `วันหมดอายุ: ${exp}`;
+            document.getElementById("vatText1").innerText = `${exp}`;
         }
 
         function calculatePriceIPv6() {
@@ -796,7 +799,7 @@
             let output = [];
             for (const [protocol, port] of Object.entries(protocols)) {
                 // output += `<p>${protocol}: ${port}</p>`;
-                if (protocol == "SOCKS5"){
+                if (protocol == "SOCKS5") {
                     output += `<br>`
                 }
                 output += `<p>${protocol}: </p>`;
@@ -808,13 +811,19 @@
             document.getElementById("patternIPv4").innerHTML = outputPatternIPv4;
         }
 
+        function calculateIPv4() {
+            calculatePriceIPv4()
+            GenerateIPv4()
+        }
+
         function copyToClipboard() {
             const totalDataElement = document.getElementById("totalData");
-            const textElements = totalDataElement.querySelectorAll('p');
+            const textElements = totalDataElement.querySelectorAll('span');
             let textToCopy = '';
 
             textElements.forEach((elem) => {
-                textToCopy += elem.innerText + '\n';
+                // textToCopy += elem.innerText + '\n';
+                textToCopy += elem.innerText;
             });
 
             // Use the Clipboard API to copy the text
