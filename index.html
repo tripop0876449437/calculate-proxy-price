@@ -642,6 +642,11 @@
                 class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white outline-none border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
         </div>
         <div class="mt-4" bis_skin_checked="2">
+            <label for="numPriceIPv6" class="block text-gray-400 font-semibold">ใส่ราคา IPs</label>
+            <input type="number" id="numPriceIPv6" name="numPriceIPv6" min="1"
+                class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white outline-none border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+        </div>
+        <div class="mt-4" bis_skin_checked="2">
             <button onclick="calculatePriceIPv6()"
                 class="px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
         </div>
@@ -738,16 +743,25 @@
 
         function calculatePriceIPv6() {
             const numIPsInput = document.getElementById("numIPv6");
+            const numPriceIPsInput = document.getElementById("numPriceIPv6");
             const numIPs = numIPsInput.value;
             let pricePerIP;
 
-            if (numIPs >= 1 && numIPs <= 99) {
-                pricePerIP = 40;
-            } else if (numIPs >= 100 && numIPs <= 199) {
-                pricePerIP = 35;
-            } else if (numIPs >= 200) {
-                pricePerIP = 30;
+            console.log('Price: ', numPriceIPsInput.value);
+            if (numPriceIPsInput.value == "") {
+                if (numIPs >= 1 && numIPs <= 99) {
+                    pricePerIP = 40;
+                } else if (numIPs >= 100 && numIPs <= 199) {
+                    pricePerIP = 35;
+                } else if (numIPs >= 200) {
+                    pricePerIP = 30;
+                }
+            } else {
+                console.log("Price else if:", numPriceIPsInput.value);
+                pricePerIP = numPriceIPsInput.value
             }
+
+
 
             const totalPrice = pricePerIP * numIPs;
             const vat = totalPrice * 0.07;
