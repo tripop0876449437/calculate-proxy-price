@@ -12,8 +12,15 @@ function calculate4P() {
     const format = num => parseFloat(num).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     Object.keys(calculations).forEach(id => {
-        const symbol = id === "FB2Text" ? " %" : "$ ";
-        document.getElementById(id).innerText = `${symbol}${format(calculations[id])}`;
+        let symbol = "$ ";
+        let formattedText = `${symbol}${format(calculations[id])}`;
+
+        // Check if it's the FB2Text to put the % symbol after the value
+        if (id === "FB2Text") {
+            symbol = ""; // No symbol before the number
+            formattedText = `${format(calculations[id])} %`;
+        }
+        document.getElementById(id).innerText = formattedText;
     });
 }
 
