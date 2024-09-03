@@ -24,11 +24,31 @@ function calculate4P() {
     });
 }
 
-function copyToFB1() {
-    let FB1Text = document.getElementById("FB1Text").innerText;
-    navigator.clipboard.writeText(FB1Text.replace('$ ', '').replace(/,/g, '')).then(() => {
+function copyToClipboard(id) {
+    let text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text.replace('$ ', '').replace(/,/g, '')).then(() => {
         alert('ข้อมูลถูกคัดลอกเรียบร้อยแล้ว');
     }).catch((err) => {
         console.error('Error copying text to clipboard: ', err);
     });
+}
+
+function copyToFB1() {
+    copyToClipboard("FB1Text");
+}
+
+function copyToFB2() {
+    copyToClipboard("FB2Text");
+}
+
+function copyToFB3() {
+    copyToClipboard("FB3Text");
+}
+
+function copyToFB4() {
+    copyToClipboard("FB4Text");
+}
+
+function copyToFB5() {
+    copyToClipboard("FB5Text");
 }
