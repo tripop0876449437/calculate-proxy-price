@@ -53,7 +53,7 @@ async function convertBUSDToTHB(BUSD) {
         const coingeckoData = await coingeckoResponse.json();
         usdToThbRate = parseFloat(coingeckoData.usd.thb);
 
-        const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)+1).toFixed(2);
+        const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)).toFixed(2);
         return thbAmount;
     } catch (error) {
         console.error('Error fetching exchange rate:', error);
@@ -108,3 +108,8 @@ function copyToFB4() {
 function copyToFB5() {
     copyToClipboard("FB5Text");
 }
+
+function copyToFB6() {
+    copyToClipboard("FB6Text");
+}
+
