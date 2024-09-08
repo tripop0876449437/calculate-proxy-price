@@ -113,3 +113,12 @@ function copyToFB6() {
     copyToClipboard("FB6Text");
 }
 
+async function Money() {
+    try {
+        const thb = await convertBUSDToTHB(1); // รอผลลัพธ์จากฟังก์ชัน asynchronous
+        document.getElementById("money").innerText = `$1 = ${thb}฿`;
+    } catch (error) {
+        console.error('Error during conversion:', error);
+    }
+}
+Money()
