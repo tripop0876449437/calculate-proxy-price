@@ -51,7 +51,7 @@ async function convertBUSDToTHB(BUSD) {
 
         const coingeckoResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=thb');
         const coingeckoData = await coingeckoResponse.json();
-        usdToThbRate = parseFloat(coingeckoData.usd.thb);
+        usdToThbRate = parseFloat((coingeckoData.usd.thb)+0.5);
 
         const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)).toFixed(2);
         return thbAmount;
