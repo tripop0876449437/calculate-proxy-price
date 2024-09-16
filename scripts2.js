@@ -17,7 +17,8 @@ async function calculate4P() {
     };
 
     // Convert FB5Text (BUSD) to THB
-    calculations.FB6Text = await convertBUSDToTHB(calculations.FB5Text);
+    // calculations.FB6Text = await convertBUSDToTHB(calculations.FB1Text);
+    calculations.FB6Text = (await convertBUSDToTHB(1))* calculations.FB1Text;
 
     const format = num => parseFloat(num).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
