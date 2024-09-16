@@ -1,6 +1,7 @@
 async function calculate4P() {
     const FB1Float = parseFloat(document.getElementById("fb1").value);
     const FB2Float = parseFloat(document.getElementById("fb2").value);
+    const Mbank = 0.50;
 
     if (isNaN(FB1Float) || isNaN(FB2Float)) {
         alert('กรุณาใส่ค่าที่ถูกต้องสำหรับ FB1 และ FB2');
@@ -8,11 +9,11 @@ async function calculate4P() {
     }
 
     const calculations = {
-        FB1Text: ((FB1Float * 4 / 100) + FB1Float).toFixed(2),
-        FB2Text: (FB2Float - 0.50).toFixed(2),
-        FB3Text: (FB1Float * ((FB2Float - 0.50) / 100)).toFixed(2),
-        FB4Text: ((FB2Float - 0.50) / 2).toFixed(2),
-        FB5Text: (((FB1Float * 4 / 100) + FB1Float) - ((FB2Float - 0.50) / 2)).toFixed(2)
+        FB1Text: ((FB1Float * FB2Float / 100) + FB1Float).toFixed(2),
+        FB2Text: (FB2Float - Mbank).toFixed(2),
+        FB3Text: (FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2),
+        FB4Text: (((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2),
+        FB5Text: (((FB1Float * FB2Float / 100) + FB1Float).toFixed(2)) - ((((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2))
     };
 
     // Convert FB5Text (BUSD) to THB
@@ -51,7 +52,7 @@ async function convertBUSDToTHB(BUSD) {
 
         const coingeckoResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=thb');
         const coingeckoData = await coingeckoResponse.json();
-        usdToThbRate = parseFloat((coingeckoData.usd.thb)+0.5);
+        usdToThbRate = parseFloat((coingeckoData.usd.thb).toFixed(2))+0.5;
 
         const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)).toFixed(2);
         return thbAmount;
