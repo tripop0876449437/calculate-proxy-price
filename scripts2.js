@@ -90,6 +90,23 @@ function copyToClipboard(id) {
     });
 }
 
+function copyToClipboardALL() {
+    const totalDataElement = document.getElementById("totalDataFB1");
+    const textElements = totalDataElement.querySelectorAll('p');
+    let textToCopy = '';
+
+    textElements.forEach((elem) => {
+        textToCopy += elem.innerText + '\n';
+    });
+
+    // Use the Clipboard API to copy the text
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
+    }, (err) => {
+        console.error('Error copying text to clipboard: ', err);
+    });
+}
+
 // Example copy functions
 function copyToFB1() {
     copyToClipboard("FB1Text");
