@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js"
+    id="eppiocemhmnlbhjplcgkofciiegomcon"></script>
+<script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
+<script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Price Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script bis_use="true" type="text/javascript" charset="utf-8"
+        data-bis-config="[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;//linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;]"
+        src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/../executers/vi-tr.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-center items-center">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-semibold">Proxy</a>
+                <a href="no-limit.html" class="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-md font-semibold">FB Nolimit</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Calcultion IPv6 -->
+    <div  class="flex justify-center items-center h-screen bg-gray-900 gap-10" bis_skin_checked="1">
+        <div class="p-6 bg-gray-800 backdrop-blur-lg border border-gray-700 rounded-lg shadow-xl" bis_skin_checked="2">
+            <h2 class="text-2xl font-bold border-b border-gray-700 pb-3 text-white text-center">IPv6</h2>
+            <h2 class="text-xl font-bold border-b border-gray-700 py-3 text-white">Proxy Price Calculator</h2>
+            <div class="mt-4" bis_skin_checked="2">
+                <label for="numIPv6" class="block text-gray-400 font-semibold">ใส่จำนวน IPs</label>
+                <input type="number" id="numIPv6" name="numIPv6" min="1"
+                    class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white outline-none border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+            </div>
+            <div class="mt-4" bis_skin_checked="2">
+                <label for="numPriceIPv6" class="block text-gray-400 font-semibold">ใส่ราคา IPs</label>
+                <input type="number" id="numPriceIPv6" name="numPriceIPv6" min="1"
+                    class="mt-1 p-2 w-full rounded-md bg-gray-700 text-white outline-none border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+            </div>
+            <div class="mt-4" bis_skin_checked="2">
+                <button onclick="calculatePriceIPv6()"
+                    class="px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
+            </div>
+            <div id="totalDataIPv6" class="mt-6 text-white border border-gray-600 rounded-[5px] p-2" bis_skin_checked="2">
+                <p id="numIPv6Text" class="text-lg font-semibold">แจ้งยอดชำระ XX IPs</p>
+                <p id="priceIPv6Text" class="mt-2">ราคา IP = XXX฿</p>
+                <p id="vatIPv6Text" class="mt-2">VAT 7% = XX.XX฿</p>
+                <p class="mt-2">--------------------------------------</p>
+                <p id="totalIPv6Text">ราคารวม VAT = XXX.XX฿</p>
+            </div>
+            <button onclick="copyToClipboardIPv6()"
+                class="px-2 py-1 bg-green-500 mt-5 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">COPY</button>
+        </div>
+    
+        <!-- Generate IPv4 -->
+        <div class="p-6 bg-stone-800 backdrop-blur-lg border border-stone-700 rounded-lg shadow-xl w-[1000px] relative"
+            bis_skin_checked="3">
+            <h2 class="text-2xl font-bold border-b border-stone-700 pb-3 text-white text-center">IPv4</h2>
+            <h2 class="text-xl font-bold border-b border-stone-700 py-3 text-white">Proxy IPv4 Generate</h2>
+            <div class="mt-4" bis_skin_checked="3">
+                <label for="textIPv4" class="block text-stone-400 font-semibold">ใส่ข้อมูล IPv4 ที่ยังไม่ได้เรียง</label>
+                <textarea id="textIPv4" name="textIPv4" min="1" rows="10"
+                    class="mt-1 p-2 w-full rounded-md bg-stone-700 text-white outline-none border border-stone-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                </textarea>
+            </div>
+            <div class="mt-4" bis_skin_checked="3">
+                <label for="quantityDay" class="block text-stone-400 font-semibold">ใส่จำนวนวันหมดอายุ</label>
+                <div class="mt-1 mb-7 flex items-center gap-10 bg-stone-700 p-2 rounded-md">
+                    <input type="number" id="quantityDay" name="quantityDay" min="1"
+                        class="p-2 h-10 w-60 rounded-md bg-stone-700 text-white outline-none border border-stone-500 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                    <div class="px-10 border-stone-600 border-x-4">
+                        <div id="totalData" class="text-white border border-stone-500 rounded-[5px] p-2"
+                            bis_skin_checked="3">
+                            <!-- <p id="totalVatText" class="text-lg font-semibold">ราคารวม: XXX฿</p>
+                        <p class="mt-2">--------------------------------------</p>
+                        <p id="IPPriceText">ราคาแต่ละIP: XXX.XX฿</p> -->
+                            <p>วันหมดอายุ: <span id="vatText1">YYYYMMDD=>YYYYMMDD</span></p>
+                        </div>
+                    </div>
+                    <button onclick="copyToClipboard()"
+                        class="px-2 py-1 bg-lime-500 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">COPY</button>
+                </div>
+                <button onclick="calculateIPv4()"
+                    class="px-4 py-2 bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-4 focus:ring-violet-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
+            </div>
+            <div id="informationIPv4Full" class="mt-6 text-white border border-stone-600 rounded-[5px] p-2 h-[350px]"
+                bis_skin_checked="3" style="max-height: 350px; overflow-y: auto;">
+                <div id="patternIPv4">
+                    <p>Pattern: </p>
+                    <p>xxxx:xxxx:xxxx:xxxx</p>
+                </div><br>
+                <div id="informationIPv4" class="">
+                    <p>HTTP(s): XXXXX</p>
+                    <p>xxxx.xxxx.xxxx.xxxx:xxxxx:xxxxxxxx:xxxxxxxx</p>
+                    <p>SOCKS5: XXXXX</p>
+                    <p>xxxx.xxxx.xxxx.xxxx:xxxxx:xxxxxxxx:xxxxxxxx</p>
+                </div>
+            </div>
+            <button onclick="copyToClipboardGenerateIPv4()"
+                class="px-2 py-1 bg-lime-500 mt-5 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">
+                COPY
+            </button>
+        </div>
+    </div>
+
+    <script src="/scripts.js"></script>
+
+
+</body>
+
+</html>

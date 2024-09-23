@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Proxy IPv6</title>
+</head>
+
+<body class="bg-[#ebf3fc] p-5 gap-5 sm:p-20 sm:gap-10 xl:gap-16 w-full mx-auto max-w-[1500px] h-full flex flex-col xl:flex xl:flex-row"
+    style="font-family: 'Prompt', sans-serif; font-style: normal;">
+    <div class="xl:max-w-[230px] w-full flex flex-row xl:flex xl:flex-col sm:flex sm:flex-row gap-1 sm:gap-5">
+        <a href="/index.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[25px] sm:text-4xl">
+            ProxyV4
+        </a>
+        <a href="/proxy-ipv6.html"
+            class="bg-sky-400 w-full text-center text-3xl text-white border-2 border-gray-400 rounded-2xl p-2 text-[25px] sm:text-4xl">
+            ProxyV6
+        </a>
+        <a href="/no-limit-new.html" class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[25px] sm:text-4xl">
+            FB:NLM
+        </a>
+    </div>
+    <div class="bg-white border-[10px] border-[#ff914d] w-full max-h-[1000px] rounded-3xl p-7 sm:p-10">
+        <div class="flex flex-row">
+            <p class="w-full text-4xl sm:text-5xl font-bold ">IPv6</p>
+            <button onclick="calculatePriceIPv6()"
+                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-3 text-white text-xl xl:text-2xl h-[50px] xl:h-[60px] font-bold rounded-lg">Calculate</button>
+        </div>
+        <div class="flex flex-col gap-2 mt-2 sm:mt-0">
+            <div class="w-full flex flex-col sm:flex-row gap-2 ">
+                <div class="w-full flex flex-col gap-2">
+                    <p class="text-bold">ใส่จำนวน IPs</p>
+                    <input type="number" id="numIPv6" name="numIPv6" min="1" placeholder="XX"
+                        class="bg-[#ffede3] w-full border-2 border-[#ff914d] rounded-xl h-[50px] flex flex-col justify-center px-5">
+                </div>
+                <div class="w-full flex flex-col gap-2">
+                    <p class="text-bold">ใส่ราคา IPs</p>
+                    <div class="w-full flex flex-col gap-2 items-end">
+                        <input type="number" id="numPriceIPv6" name="numPriceIPv6" min="1" placeholder="XX"
+                            class="bg-[#ffede3] w-full border-2 border-[#ff914d] rounded-xl h-[50px] flex flex-col justify-center px-5">
+                    </div>
+                </div>
+            </div>
+            <div id="informationIPv4Full" class="flex flex-col sm:flex-col gap-2 w-full items-end">
+                <div id="totalDataIPv6" class="bg-white w-full border-2 border-[#ff914d] rounded-xl p-7 sm:p-10"
+                    style="max-height: 350px; overflow-y: auto;">
+                    <p id="numIPv6Text" class="text-lg font-semibold">แจ้งยอดชำระ XX IPs</p>
+                    <p id="priceIPv6Text" class="mt-2">ราคา IP = XXX฿</p>
+                    <p id="vatIPv6Text" class="mt-2">VAT 7% = XX.XX฿</p>
+                    <p class="mt-2">--------------------------------------</p>
+                    <p id="totalIPv6Text">ราคารวม VAT = XXX.XX฿</p>
+                </div>
+                <button onclick="copyToClipboardIPv6()"
+                    class="bg-sky-400 px-5 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px]">Copy</button>
+            </div>
+            <img src="/Img/logoProxy2.png" alt="" srcset="" width="30%" class="opacity-80">
+        </div>
+    </div>
+    <script src="/scripts.js"></script>
+</body>
+
+</html>

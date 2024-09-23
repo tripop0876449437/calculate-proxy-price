@@ -10,50 +10,94 @@
         href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>FB Nolimit Calculator</title>
+    <title>FB: Nolimit</title>
 </head>
 
-<body class="bg-[#ebf3fc] p-5 gap-5 sm:p-20 sm:gap-20 w-full h-full flex flex-col xl:flex xl:flex-row" style="font-family: 'Prompt', sans-serif; font-style: normal;">
-    <div class="xl:max-w-[230px] w-full flex flex-col xl:flex xl:flex-col sm:flex sm:flex-row gap-5">
-        <button class="bg-sky-400 w-full text-4xl text-white border-2 border-gray-400 rounded-2xl p-2 sm:text-5xl">
+<body
+    class="bg-[#ebf3fc] p-5 gap-5 sm:p-20 sm:gap-10 xl:gap-16 w-full mx-auto max-w-[1500px] h-full flex flex-col xl:flex xl:flex-row"
+    style="font-family: 'Prompt', sans-serif; font-style: normal;">
+    <div class="xl:max-w-[230px] w-full flex flex-row xl:flex xl:flex-col sm:flex sm:flex-row gap-1 sm:gap-5">
+        <a href="/index.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[25px] sm:text-4xl">
             ProxyV4
-        </button>
-        <button class="bg-white w-full text-4xl text-black border-2 border-gray-400 rounded-2xl p-2 sm:text-5xl">
+        </a>
+        <a href="/proxy-ipv6.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[25px] sm:text-4xl">
             ProxyV6
-        </button>
-        <button class="bg-white w-full text-4xl text-black border-2 border-gray-400 rounded-2xl p-2 sm:text-5xl">
+        </a>
+        <a href="/no-limit-new.html"
+            class="bg-sky-400 w-full text-center text-3xl text-white border-2 border-gray-400 rounded-2xl p-2 text-[25px] sm:text-4xl">
             FB:NLM
-        </button>
+        </a>
     </div>
-    <div class="bg-white border-[10px] border-[#8c52ff] w-full h-[1000px] rounded-3xl p-10">
+    <div class="bg-white border-[5px] sm:border-[10px] border-[#004aad] w-full rounded-[30px] sm:rounded-[50px] p-5 sm:p-10">
         <div class="flex flex-row">
-            <p class="w-full text-5xl font-bold">IPv4</p>
-            <button
-                class="bg-gradient-to-r from-[#004aad] to-[#cb6ce6] px-3 text-white text-xl font-bold rounded-lg">Calculate</button>
+            <p class="w-full text-3xl sm:text-5xl font-bold ">FB: NOLIMITE <span id="money">$1 = XX.XX฿</span></p>
+            <button onclick="calculate4P()"
+                class="bg-gradient-to-r from-[#000000] to-[#3533cd] px-3 text-white text-xl xl:text-2xl h-[50px] xl:h-[60px] font-bold rounded-lg">Calculate</button>
         </div>
-        <div class="flex flex-col gap-2">
-            <div class="w-full flex flex-row gap-2">
+        <div class="flex flex-col gap-2 mt-2 sm:mt-8">
+            <div class="w-full flex flex-col sm:flex-row gap-2 ">
                 <div class="w-full flex flex-col gap-2">
-                    <p class="text-bold">ใส่ข้อมูล IPv4 ที่ยังไม่ได้เรียง</p>
-                    <div class="bg-white w-full border-2 border-[#cb6ce6] rounded-xl h-[300px]">1</div>
+                    <p class="text-bold text-[#004aad]">ยอดที่ลูกค้าต้องการเติมเข้าบัญชีโฆษณา</p>
+                    <input type="number" id="fb1" name="fb1" min="1" placeholder="XX"
+                        class="bg-[#edf5ff] w-full sm:w-[90%] border-2 border-[#004aad] rounded-[15px] h-[50px] flex flex-col justify-center px-5">
                 </div>
                 <div class="w-full flex flex-col gap-2">
-                    <p class="text-bold">ใส่จำนวนวันหมดอายุ</p>
-                    <div class="w-full flex flex-col gap-2 items-end">
-                        <div class="bg-white w-full border-2 border-[#cb6ce6] rounded-xl h-[50px] flex flex-col justify-center px-5">
-                            <p>2</p>
-                        </div>
-                        <div class="bg-white w-full border-2 border-[#cb6ce6] rounded-xl h-[50px] flex flex-col justify-center px-5">
-                            <p>3</p>
-                        </div>
-                        <button class="bg-sky-400 px-5 py-2 text-white text-md max-w-[100px]">Copy</button>
+                    <div class="w-full flex flex-col gap-2 items-start">
+                        <p class="text-bold text-[#004aad]">Customer Fee ค่าธรรมเนียมของลูกค้า</p>
+                        <input type="number" id="fb2" name="fb2" min="1" placeholder="XX"
+                            class="bg-[#edf5ff] w-full sm:w-[90%] border-2 border-[#004aad] rounded-[15px] h-[50px] flex flex-col justify-center px-5">
                     </div>
-                    <img src="" alt="" srcset="">
                 </div>
             </div>
-            <div class="bg-white w-full border-2 border-[#cb6ce6] rounded-xl h-[300px]">2</div>
+            <div id="informationIPv4Full"
+                class="flex flex-col gap-5 sm:flex-row w-full max-w-[560px] items-end h-full max-h-[700px] mt-2 mb-5 sm:my-8 mx-auto ">
+                <div class="flex flex-col gap-1 sm:gap-5 mx-auto w-full max-w-[560px]">
+                    <div class="flex flex-row gap-5 mx-auto w-full max-w-[560px]">
+                        <div id="totalDataFB1"
+                            class="bg-white w-full border-2 border-[#004aad] rounded-[30px] max-h-[480px] sm:max-h-[500px] p-5" style="overflow-y: auto;">
+                            <p id="" class="text-sm sm:text-lg font-semibold mb-3">ยอดที่ลูกค้าต้องโอนให้เรา (ค่าบริการ กี่%)</p>
+                            <p id="FB1Text" class="text-md sm:text-lg">$ XXX.XX</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Profit Fee (เหลือกำไร กี่%)</p>
+                            <p id="FB2Text" class="text-md sm:text-lg">XX.XX%</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Total Profit (เหลือกำไรกี่บาท)</p>
+                            <p id="FB3Text" class="text-md sm:text-lg">$ XXX.XX</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Part Profit (ต้องแบ่งกำไรกับเขาเท่าไหร่)</p>
+                            <p id="FB4Text" class="text-md sm:text-lg">$ XXX.XX</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Paid for Nolimit (ที่ต้องจ่ายให้ FB)</p>
+                            <p id="FB5Text" class="text-md sm:text-lg">$ XXX.XX</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">ยอดที่ลูกค้าต้องโอนให้เราเป็นบาท</p>
+                            <p id="FB6Text" class="text-md sm:text-lg">฿ XXX.XX</p>
+                        </div>
+                        <div class="flex flex-col justify-center gap-8 h-[500px] max-h-[500px] sm:pt-5">
+                            <button onclick="copyToFB1()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px]">Copy</button>
+                            <button onclick="copyToFB2()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px]">Copy</button>
+                            <button onclick="copyToFB3()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px]">Copy</button>
+                            <button onclick="copyToFB4()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px]">Copy</button>
+                            <button onclick="copyToFB5()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px]">Copy</button>
+                            <button onclick="copyToFB6()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px]">Copy</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-row w-full gap-5">
+                        <button onclick="copyToClipboardPattern()"
+                            class="bg-gradient-to-r from-[#5170ff] to-[#ff914d] px-5 py-3 text-white text-lg w-full sm:max-w-[140px] max-h-[60px] rounded-xl">CopyPattern</button>
+                        <button onclick="copyToClipboardALL()"
+                            class="bg-gradient-to-r from-[#0097b2] to-[#7ed957] px-5 py-3 text-white text-lg w-full sm:max-w-[140px] max-h-[60px] rounded-xl">CopyAll</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
+        <img src="/Img/logoNLM.png" alt="" srcset="" width="80%">
     </div>
+    <script src="/scripts2.js"></script>
 </body>
 
 </html>

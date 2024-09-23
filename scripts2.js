@@ -1,3 +1,6 @@
+let thbAmounts = '';
+let FB1Texts = '';
+
 async function calculate4P() {
     const FB1Float = parseFloat(document.getElementById("fb1").value);
     const FB2Float = parseFloat(document.getElementById("fb2").value);
@@ -19,6 +22,7 @@ async function calculate4P() {
     // Convert FB5Text (BUSD) to THB
     // calculations.FB6Text = await convertBUSDToTHB(calculations.FB1Text);
     calculations.FB6Text = (await convertBUSDToTHB(1))* calculations.FB1Text;
+    FB5Texts = calculations.FB5Text;
 
     const format = num => parseFloat(num).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -56,6 +60,7 @@ async function convertBUSDToTHB(BUSD) {
         usdToThbRate = parseFloat((coingeckoData.usd.thb).toFixed(2))+0.5;
 
         const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)).toFixed(2);
+        thbAmounts = thbAmount;
         return thbAmount;
     } catch (error) {
         console.error('Error fetching exchange rate:', error);
@@ -101,6 +106,30 @@ function copyToClipboardALL() {
 
     // Use the Clipboard API to copy the text
     navigator.clipboard.writeText(textToCopy).then(() => {
+        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
+    }, (err) => {
+        console.error('Error copying text to clipboard: ', err);
+    });
+}
+
+function copyToClipboardPattern() {
+    // const totalDataElement = document.getElementById("totalDataFB1");
+    // const textElements = totalDataElement.querySelectorAll('p');
+    const FB1Float = parseFloat(document.getElementById("fb1").value);
+    const FB2Float = parseFloat(document.getElementById("fb2").value);
+    let textToCopy = '';
+    let patternNLM = `
+        ลูกค้าจะได้รับเงินในบัญชีโฆษณา ${FB1Float} USD
+        ${FB1Float}$ + ${FB2Float}$(ค่าบริการ) = ${FB1Texts}$
+        ยอดชำระ ${thbAmounts} บาทค่ะ
+    `;
+
+    // textElements.forEach((elem) => {
+    //     textToCopy += elem.innerText + '\n';
+    // });
+
+    // Use the Clipboard API to copy the text
+    navigator.clipboard.writeText(patternNLM).then(() => {
         alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
     }, (err) => {
         console.error('Error copying text to clipboard: ', err);
