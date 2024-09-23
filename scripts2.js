@@ -1,5 +1,7 @@
 let thbAmounts = '';
 let FB1Texts = '';
+let FB5Texts = '';
+let FB6Texts = '';
 
 async function calculate4P() {
     const FB1Float = parseFloat(document.getElementById("fb1").value);
@@ -16,13 +18,17 @@ async function calculate4P() {
         FB2Text: (FB2Float - Mbank).toFixed(2),
         FB3Text: (FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2),
         FB4Text: (((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2),
-        FB5Text: (((FB1Float * FB2Float / 100) + FB1Float).toFixed(2)) - ((((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2))
+        FB5Text: (((FB1Float * FB2Float / 100) + FB1Float).toFixed(2)) - ((((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2)),
+        FB6Text: ''
     };
 
     // Convert FB5Text (BUSD) to THB
     // calculations.FB6Text = await convertBUSDToTHB(calculations.FB1Text);
     calculations.FB6Text = (await convertBUSDToTHB(1))* calculations.FB1Text;
+    FB1Texts = calculations.FB1Text;
     FB5Texts = calculations.FB5Text;
+    FB6Texts = parseFloat(calculations.FB6Text).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
 
     const format = num => parseFloat(num).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -117,12 +123,11 @@ function copyToClipboardPattern() {
     // const textElements = totalDataElement.querySelectorAll('p');
     const FB1Float = parseFloat(document.getElementById("fb1").value);
     const FB2Float = parseFloat(document.getElementById("fb2").value);
+    // const FB2Float = parseFloat(document.getElementById("fb2").value);
     let textToCopy = '';
-    let patternNLM = `
-        ลูกค้าจะได้รับเงินในบัญชีโฆษณา ${FB1Float} USD
-        ${FB1Float}$ + ${FB2Float}$(ค่าบริการ) = ${FB1Texts}$
-        ยอดชำระ ${thbAmounts} บาทค่ะ
-    `;
+    let patternNLM = `ลูกค้าจะได้รับเงินในบัญชีโฆษณา ${FB1Float} USD
+${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${FB1Texts}$
+ยอดชำระ ${FB6Texts} บาทค่ะ`;
 
     // textElements.forEach((elem) => {
     //     textToCopy += elem.innerText + '\n';
