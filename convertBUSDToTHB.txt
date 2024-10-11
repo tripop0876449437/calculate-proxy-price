@@ -1,0 +1,24 @@
+async function convertBUSDToTHB(BUSD) {
+    const busdAmount = parseFloat(BUSD);
+    let usdToThbRate, busdToUsdRate;
+
+    try {
+        const coinbaseResponse = await fetch('https://api.coinbase.com/v2/prices/BUSD-USD/spot');
+        const coinbaseData = await coinbaseResponse.json();
+        busdToUsdRate = parseFloat(coinbaseData.data.amount);
+
+
+        const coingeckoResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=thb');
+        const coingeckoData = await coingeckoResponse.json();
+        usdToThbRate = parseFloat((coingeckoData.usd.thb).toFixed(2))+0.50;
+
+        const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)).toFixed(2);
+        thbAmounts = thbAmount;
+        console.log('the: ', thbAmount);
+        return thbAmount;
+    } catch (error) {
+        console.error('Error fetching exchange rate:', error);
+        alert('Error fetching exchange rate');
+        return 0;
+    }
+}

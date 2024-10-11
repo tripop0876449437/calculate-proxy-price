@@ -5,7 +5,6 @@ let FB6Texts = '';
 
 async function calculate4P() {
     const Gem1Float = parseFloat(document.getElementById("gem1").value);
-    const Gem2Float = parseFloat(document.getElementById("gem2").value);
     const Mbank = 0.50;
 
     if (isNaN(Gem1Float)) {
@@ -13,11 +12,8 @@ async function calculate4P() {
         return;
     }
 
-    const conversionValue = !isNaN(Gem2Float) ? Gem2Float : await convertBUSDToTHB(1);
-    const Total = (parseFloat(conversionValue) + Mbank) * Gem1Float;
-    
-    console.log(typeof conversionValue);
-    console.log(Total);
+    const Total = (parseFloat(await convertBUSDToTHB(1)) + Mbank) * Gem1Float;
+
     document.getElementById("Gem1Text").innerText = Total.toFixed(2) + " ฿";
 }
 
@@ -35,9 +31,11 @@ async function convertBUSDToTHB(BUSD) {
         const coingeckoResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=thb');
         const coingeckoData = await coingeckoResponse.json();
         usdToThbRate = parseFloat((coingeckoData.usd.thb).toFixed(2));
+        console.log('bt: ', parseFloat((coingeckoData.usd.thb).toFixed(2))+0.50);
 
         const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)).toFixed(2);
         thbAmounts = thbAmount;
+        console.log('the: ', thbAmount);
         return thbAmount;
     } catch (error) {
         console.error('Error fetching exchange rate:', error);
@@ -103,7 +101,9 @@ function copyToGem1() {
 async function Money() {
     try {
         const thb = await convertBUSDToTHB(1); // รอผลลัพธ์จากฟังก์ชัน asynchronous
+        const thbPlus = parseFloat(await convertBUSDToTHB(1)) + 0.50; // รอผลลัพธ์จากฟังก์ชัน asynchronous
         document.getElementById("money").innerText = `$1 = ${thb}฿`;
+        document.getElementById("moneyPlus").innerText = `$1 = ${thbPlus}฿`;
     } catch (error) {
         console.error('Error during conversion:', error);
     }
