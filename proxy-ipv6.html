@@ -15,24 +15,32 @@
 
 <body class="bg-[#ebf3fc] p-5 gap-5 sm:p-20 sm:gap-10 xl:gap-16 w-full mx-auto max-w-[1500px] h-full flex flex-col xl:flex xl:flex-row"
     style="font-family: 'Prompt', sans-serif; font-style: normal;">
-    <div class="xl:max-w-[230px] w-full flex flex-row xl:flex xl:flex-col sm:flex sm:flex-row gap-1 sm:gap-5">
+    <button onclick="toggleMenu()" class="sm:hidden bg-sky-400 text-white font-bold p-2 rounded-md">
+        <img src="/Img/list.svg" alt="">
+    </button>
+    <div id="sideMenu" class="xl:max-w-[230px] w-full h-full flex flex-row xl:flex xl:flex-col sm:flex flex-wrap sm:flex-nowrap gap-1 gap-1 sm:gap-1 md:gap-1 lg:gap-1 hidden">
         <a href="/index.html"
-            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-4xl">
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
             ProxyV4
         </a>
         <a href="/proxy-ipv6.html"
-            class="bg-sky-400 w-full text-center text-3xl text-white border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-4xl">
+            class="bg-sky-400 w-full text-center text-3xl text-white border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
             ProxyV6
         </a>
-        <a href="/no-limit-new.html" class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-4xl">
+        <a href="/no-limit-new.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
             FB:NLM
         </a>
         <a href="/gemlogin.html"
-            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-4xl">
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
             GemLogin
         </a>
+        <a href="/theoadv.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            Theoadv
+        </a>
     </div>
-    <div class="bg-white border-[10px] border-[#ff914d] w-full max-h-[1000px] rounded-3xl p-7 sm:p-10">
+    <div class="bg-white border-[5px] sm:border-[10px] border-[#ff914d] w-full max-h-[1000px] rounded-3xl p-7 sm:p-10">
         <div class="flex flex-row">
             <p class="w-full text-4xl sm:text-5xl font-bold ">IPv6</p>
             <button onclick="calculatePriceIPv6()"
@@ -69,6 +77,7 @@
         </div>
     </div>
     <script src="/scripts.js"></script>
+    <script src="/scriptsRSP.js"></script>
 </body>
 
 </html>

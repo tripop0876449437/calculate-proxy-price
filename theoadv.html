@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>FB: Nolimit</title>
+</head>
+
+<body
+    class="bg-[#ebf3fc] p-5 gap-5 sm:p-20 sm:gap-10 xl:gap-16 w-full mx-auto max-w-[1500px] h-full flex flex-col xl:flex xl:flex-row"
+    style="font-family: 'Prompt', sans-serif; font-style: normal;">
+    <button onclick="toggleMenu()" class="sm:hidden bg-sky-400 text-white font-bold p-2 rounded-md">
+        <img src="/Img/list.svg" alt="">
+    </button>
+    <div id="sideMenu" class="xl:max-w-[230px] w-full h-full flex flex-row xl:flex xl:flex-col sm:flex flex-wrap sm:flex-nowrap gap-1 gap-1 sm:gap-1 md:gap-1 lg:gap-1 hidden">
+        <a href="/index.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            ProxyV4
+        </a>
+        <a href="/proxy-ipv6.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            ProxyV6
+        </a>
+        <a href="/no-limit-new.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            FB:NLM
+        </a>
+        <a href="/gemlogin.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            GemLogin
+        </a>
+        <a href="/theoadv.html"
+            class="bg-sky-400 w-full text-center text-3xl text-white border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            Theoadv
+        </a>
+    </div>
+    <div class="bg-white bg-gradient-to-r border-[#1bdaff] border-[5px] sm:border-[10px] w-full rounded-[30px] sm:rounded-[30px] p-5 sm:p-10">
+        <div class="flex flex-row">
+            <p class="w-full text-3xl sm:text-5xl font-bold ">Theoadv</p>
+            <button onclick="calculateDay()"
+                class="bg-gradient-to-r from-[#8c52ff] to-[#1bdaff] px-3 text-white text-xl xl:text-2xl h-[50px] xl:h-[60px] font-bold rounded-lg">Calculate</button>
+        </div>
+        <div class="flex flex-col gap-2 mt-2 sm:mt-8">
+            <div class="w-full flex flex-col sm:flex-row gap-2 max-h-[700px]">
+                <div class="w-full sm:w-[50%] flex flex-col gap-2">
+                    <p class="text-bold text-[#2b00ff]">ชื่อโดเมน</p>
+                    <textarea id="textTheoadv" name="textTheoadv" min="1" rows="10"
+                        class="bg-[#edf5ff] w-full border-2 border-[#2b00ff] rounded-xl h-[200px] sm:h-[300px] p-10"></textarea>
+                </div>
+                <div class="w-full sm:w-[50%] flex flex-col">
+                    <div class="w-full flex flex-col gap-2">
+                        <p class="text-bold text-[#2b00ff]">วัน/เดือน/ปี</p>
+                        <input type="text" id="theoadv1" name="theoadv1" min="1" placeholder="XX"
+                            class="bg-[#edf5ff] w-full sm:w-[100%] border-2 border-[#2b00ff] rounded-[15px] h-[50px] flex flex-col justify-center px-5">
+                    </div>
+                    <div id="informationTheoadvFull"
+                        class="flex flex-col gap-5 sm:flex-row w-full max-w-[560px] items-end h-full max-h-[700px] mt-2 mb-5 sm:my-8 mx-auto ">
+                        <div class="flex flex-col gap-1 sm:gap-5 mx-auto w-full max-w-[560px]">
+                            <div class="flex flex-col gap-5 mx-auto w-full max-w-[560px]">
+                                <div id="totalDataTheoadv1"
+                                    class="bg-white w-full border-2 border-[#2b00ff] rounded-[30px] max-h-[230px] sm:max-h-[230px] p-5" style="overflow-y: auto;">
+                                    <p id="Theoadv1Title" class="text-sm sm:text-lg font-semibold mb-3">แจ้งต่ออายุโดเมน</p>
+                                    <p id="Theoadv1Text" class="text-md sm:text-lg">
+                                        สวัสดีครับ แจ้งเรื่องโดเมน xxx หมดอายุวันที่ xxx กรุณาแจ้งชำระเงินเพื่อต่ออายุ
+                                    </p>
+                                </div>
+                                <div class="flex flex-col justify-center items-center max-h-[500px]">
+                                    <button onclick="copyToTheo()"
+                                        class="bg-gradient-to-r from-[#8c52ff] to-[#00bf63] px-5 sm:px-8 py-3 text-white text-xl w-full sm:max-w-[130px] max-h-[60px]">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="/Img/Theo.png" alt="" srcset="" width="40%" class="opacity-60">
+    </div>
+    <script src="/scripts4.js"></script>
+    <script src="/scriptsRSP.js"></script>
+</body>
+
+</html>
