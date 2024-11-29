@@ -1,7 +1,7 @@
 function calculateDay() {
     let textTheoadv = document.getElementById("textTheoadv").value;
     let theoadv1 = document.getElementById("theoadv1").value;
-    
+    let theoadv2 = document.getElementById("theoadv2").value;
     // console.log(`สวัสดีครับ แจ้งเรื่องโดเมน ${textTheoadv} หมดอายุวันที่ ${theoadv1} กรุณาแจ้งชำระเงินเพื่อต่ออายุ`);
 
     let domains = textTheoadv.split('\n');
@@ -9,7 +9,11 @@ function calculateDay() {
 
     date += ` <p id="Theoadv1Title" class="text-md sm:text-lg font-semibold mb-3">แจ้งต่ออายุโดเมน</p>`
     domains.forEach(element => {
-        date += `<p>สวัสดีครับ แจ้งเรื่องโดเมน ${element.trim()} หมดอายุวันที่ ${theoadv1} กรุณาแจ้งชำระเงินเพื่อต่ออายุ</p><br>`
+        if (theoadv1 == "domain") {
+            date += `<p>สวัสดีครับ แจ้งเรื่องโดเมน ${element.trim()} หมดอายุวันที่ ${theoadv2} กรุณาแจ้งชำระเงินเพื่อต่ออายุ</p><br>`
+        } else if (theoadv1 == "api") {
+            date += `<p>สวัสดีครับ แจ้งเรื่อง API Gateway โดเมน ${element.trim()} หมดอายุวันที่ ${theoadv2} กรุณาแจ้งชำระเงินเพื่อต่ออายุ</p><br>`
+        }
     });
 
     document.getElementById('totalDataTheoadv1').innerHTML = date;

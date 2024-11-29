@@ -55,10 +55,20 @@
                         class="bg-[#edf5ff] w-full border-2 border-[#2b00ff] rounded-xl h-[200px] sm:h-[300px] p-10"></textarea>
                 </div>
                 <div class="w-full sm:w-[50%] flex flex-col">
-                    <div class="w-full flex flex-col gap-2">
-                        <p class="text-bold text-[#2b00ff]">วัน/เดือน/ปี</p>
-                        <input type="text" id="theoadv1" name="theoadv1" min="1" placeholder="XX"
-                            class="bg-[#edf5ff] w-full sm:w-[100%] border-2 border-[#2b00ff] rounded-[15px] h-[50px] flex flex-col justify-center px-5">
+                    <div class="w-full flex flex-row gap-2 mt-2">
+                        <div class="">
+                            <p class="text-bold text-[#2b00ff]">ประเภท</p>
+                            <select id="theoadv1" name="theoadv1"
+                                class="bg-[#edf5ff] w-full sm:w-[100%] border-2 border-[#2b00ff] rounded-[15px] h-[50px] px-5">
+                                <option value="domain">โดเมน</option>
+                                <option value="api">API Gateway</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <p class="text-bold text-[#2b00ff]">วัน/เดือน/ปี</p>
+                            <input type="text" id="theoadv2" name="theoadv2" min="1" placeholder="XX"
+                                class="bg-[#edf5ff] w-full sm:w-[100%] border-2 border-[#2b00ff] rounded-[15px] h-[50px] flex flex-col justify-center px-5">
+                        </div>
                     </div>
                     <div id="informationTheoadvFull"
                         class="flex flex-col gap-5 sm:flex-row w-full max-w-[560px] items-end h-full max-h-[700px] mt-2 mb-5 sm:my-8 mx-auto ">
