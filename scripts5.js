@@ -1,3 +1,5 @@
+let thbAmounts = '';
+
 async function convertBUSDToTHB(BUSD) {
     const busdAmount = parseFloat(BUSD);
     let usdToThbRate, busdToUsdRate;
@@ -10,7 +12,7 @@ async function convertBUSDToTHB(BUSD) {
 
         const coingeckoResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=thb');
         const coingeckoData = await coingeckoResponse.json();
-        usdToThbRate = parseFloat((coingeckoData.usd.thb).toFixed(2));
+        usdToThbRate = parseFloat((coingeckoData.usd.thb).toFixed(2))+0.50;
         console.log('bt: ', parseFloat((coingeckoData.usd.thb).toFixed(2))+0.50);
 
         const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)).toFixed(2);
@@ -27,7 +29,7 @@ async function convertBUSDToTHB(BUSD) {
 async function Money() {
     try {
         const thb = await convertBUSDToTHB(1); // รอผลลัพธ์จากฟังก์ชัน asynchronous
-        const thbPlus = parseFloat(await convertBUSDToTHB(1)) + 0.50; // รอผลลัพธ์จากฟังก์ชัน asynchronous
+        const thbPlus = parseFloat(await convertBUSDToTHB(1)); // รอผลลัพธ์จากฟังก์ชัน asynchronous
         document.getElementById("money").innerText = `$1 = ${thb}฿`;
         document.getElementById("moneyPlus").innerText = `$1 = ${thbPlus}฿`;
     } catch (error) {
