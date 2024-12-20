@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>TT: Nolimit</title>
+</head>
+
+<body
+    class="bg-[#ebf3fc] p-5 gap-5 sm:p-20 sm:gap-10 xl:gap-16 w-full mx-auto max-w-[1500px] h-full flex flex-col xl:flex xl:flex-row"
+    style="font-family: 'Prompt', sans-serif; font-style: normal;">
+    <button onclick="toggleMenu()" class="sm:hidden bg-sky-400 text-white font-bold p-2 rounded-md">
+        <img src="/Img/list.svg" alt="">
+    </button>
+    <div id="sideMenu" class="xl:max-w-[230px] w-full h-full flex flex-row xl:flex xl:flex-col sm:flex flex-wrap sm:flex-nowrap gap-1 gap-1 sm:gap-1 md:gap-1 lg:gap-1 hidden">
+        <a href="/index.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            ProxyV4
+        </a>
+        <a href="/proxy-ipv6.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            ProxyV6
+        </a>
+        <a href="/no-limit-new.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            FB:NLM
+        </a>
+        <a href="/no-limit-new-tiktok.html"
+            class="bg-sky-400 w-full text-center text-3xl text-white border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            TT:NLM
+        </a>
+        <a href="/gemlogin.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            GemLogin
+        </a>
+        <a href="/theoadv.html"
+            class="bg-white w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl">
+            Theoadv
+        </a>
+    </div>
+    <div class="bg-white border-[5px] sm:border-[10px] border-[#8e2de2] w-full rounded-[30px] sm:rounded-[30px] p-5 sm:p-10">
+        <div class="flex flex-row">
+            <p class="w-full text-3xl sm:text-5xl font-bold ">TT: NOLIMITE <span id="money">$1 = XX.XX฿</span></p>
+            <button onclick="calculateTT()"
+                class="bg-gradient-to-r from-[#4a00e0] to-[#8e2de2] px-3 text-white text-xl xl:text-2xl h-[50px] xl:h-[60px] font-bold rounded-lg hover:shadow-lg hover:shadow-[#8e2de2]/50 hover:scale-105 transition-all duration-200">Calculate</button>
+        </div>
+        <div class="flex flex-col gap-2 mt-2 sm:mt-8">
+            <div class="w-full flex flex-col sm:flex-row gap-2 ">
+                <div id="container1" class="w-full flex flex-col gap-2">
+                    <p class="text-bold text-[#532ba2]">ยอดที่แจ้งเติม THB</p>
+                    <input type="number" id="tt1" name="tt1" min="1" placeholder="XX"
+                        class="bg-[#edf5ff] w-full sm:w-[100%] border-2 border-[#532ba2] rounded-[15px] h-[50px] flex flex-col justify-center px-5">
+                </div>
+                <div id="toggleContainer" class="md:w-[40%] w-[100%] flex flex-col gap-2 items-center justify-end">
+                    <button id="toggleButton" onclick="toggleCalculation()" class="bg-[#4a00e0] hover:bg-[#532ba2] w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-200 hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="container2" class="w-full flex flex-col gap-2">
+                    <div class="w-full flex flex-col gap-2 items-start">
+                        <p class="text-bold text-[#532ba2]">ยอดเงินที่แจ้งเติม USD</p>
+                        <input type="number" id="tt2" name="tt2" min="1" placeholder="XX"
+                            class="bg-[#edf5ff] w-full sm:w-[100%] border-2 border-[#532ba2] rounded-[15px] h-[50px] flex flex-col justify-center px-5">
+                    </div>
+                </div>
+            </div>
+            <div id="informationIPv4Full"
+                class="flex flex-col gap-5 sm:flex-row w-full max-w-[560px] items-end h-full max-h-[600px] mt-2 mb-5 sm:my-8 mx-auto ">
+                <div class="flex flex-col gap-1 sm:gap-5 mx-auto w-full max-w-[560px]">
+                    <div class="flex md:flex-row flex-col gap-5 mx-auto w-full max-w-[560px]">
+                        <div id="totalDataTT1"
+                            class="bg-white w-full border-2 border-[#532ba2] rounded-[30px] max-h-[380px] sm:max-h-[300px] p-5" style="overflow-y: auto;">
+                            <p id="" class="text-sm sm:text-lg font-semibold mb-3">ยอดเงิน THB = <span id="TT1Text" class="text-md sm:text-lg">฿ XXX.XX</span></p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">ยอดเงิน USD = <span id="TT2Text" class="text-md sm:text-lg">$ XXX.XX</span></p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">ค่าบริการ 6% = <span id="TT3Text" class="text-md sm:text-lg">฿ XX.XX</span></p>
+                            <br>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">ยอดที่ต้องชำระ = <span id="TT4Text" class="text-md sm:text-lg">฿ XXX.XX</span></p>
+                        </div>
+                        <div class="flex flex-col justify-start gap-8 md:h-[300px] md:max-h-[300px] sm:pt-5">
+                            <button onclick="copyToTT1()"
+                                class="bg-gradient-to-r from-[#8c52ff] to-[#00bf63] px-5 py-3 sm:px-8 py-2 text-white text-md w-full sm:max-w-[140px] max-h-[60px] rounded-xl hover:shadow-lg hover:shadow-[#00bf63]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <img src="/Img/logoTTNolimit.png" alt="" srcset="" class="bg-gradient-to-r from-gray-400 to-[#4a00e0] opacity-70 md:w-[80%] w-[100%]">
+    </div>
+    <script src="/scripts5.js"></script>
+    <script src="/scriptsRSP.js"></script>
+</body>
+
+</html>
