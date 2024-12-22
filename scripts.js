@@ -62,6 +62,55 @@ function calculatePriceIPv6() {
     document.getElementById("totalIPv6Text").innerText = `ราคารวม VAT = ${formattedTotalPriceWithVAT}฿`;
 }
 
+function GenerateIPv4_Old() {
+    const TextDataIPsInput = document.getElementById("textIPv4");
+    const lines = TextDataIPsInput.value.split('\n').map(line => line.trim()).filter(line => line);
+    const ipAddresses = [];
+    const protocols = {};
+    let login = '';
+    let password = '';
+
+    let outputPatternIPv4 = `
+    <div>
+        <p>Pattern: </p>
+        <p>Server:Port:Username:Password</p>
+    </div>
+    `;
+
+    lines.forEach(line => {
+        if (line.match(/^\d+\.\d+\.\d+\.\d+$/)) {
+            ipAddresses.push(line);
+        }
+        else if (line.match(/^[A-Z0-9]+\: \d+$/i)) {
+            const [protocol, port] = line.split(': ');
+            protocols[protocol] = port;
+        }
+        else if (line.match(/^Login\: .+$/i)) {
+            login = line.split(': ')[1];
+        }
+        else if (line.match(/^Password\: .+$/i)) {
+            password = line.split(': ')[1];
+        }
+        else if (line.match(/^Password\s.+$/i)) {
+            password = line.split(' ')[1];
+        }
+    })
+
+    let output = [];
+    for (const [protocol, port] of Object.entries(protocols)) {
+        // output += `<p>${protocol}: ${port}</p>`;
+        if (protocol == "SOCKS5") {
+            output += `<br>`
+        }
+        output += `<p>${protocol}: </p>`;
+        ipAddresses.forEach(ip => {
+            output += `<p>${ip}:${port}:${login}:${password}</p>`;
+        });
+    }
+    document.getElementById("informationIPv4").innerHTML = output;
+    document.getElementById("patternIPv4").innerHTML = outputPatternIPv4;
+}
+
 function GenerateIPv4() {
     const TextDataIPsInput = document.getElementById("textIPv4");
     const lines = TextDataIPsInput.value.split('\n').map(line => line.trim()).filter(line => line);
