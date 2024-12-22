@@ -12,7 +12,7 @@ async function convertBUSDToTHB(BUSD) {
 
         const coingeckoResponse = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=thb');
         const coingeckoData = await coingeckoResponse.json();
-        usdToThbRate = parseFloat((coingeckoData.usd.thb).toFixed(2))+0.50;
+        usdToThbRate = parseFloat((coingeckoData.usd.thb).toFixed(2)) + 0.50;
         console.log('bt: ', parseFloat((coingeckoData.usd.thb).toFixed(2))+0.50);
 
         const thbAmount = ((busdAmount * busdToUsdRate * usdToThbRate)).toFixed(2);
@@ -29,7 +29,7 @@ async function convertBUSDToTHB(BUSD) {
 async function Money() {
     try {
         const thb = await convertBUSDToTHB(1); // รอผลลัพธ์จากฟังก์ชัน asynchronous
-        const thbPlus = parseFloat(await convertBUSDToTHB(1)); // รอผลลัพธ์จากฟังก์ชัน asynchronous
+        const thbPlus = parseFloat(await convertBUSDToTHB(1)) + 0.50; // รอผลลัพธ์จากฟังก์ชัน asynchronous
         document.getElementById("money").innerText = `$1 = ${thb}฿`;
         document.getElementById("moneyPlus").innerText = `$1 = ${thbPlus}฿`;
     } catch (error) {
@@ -84,10 +84,10 @@ async function calculateTT(){
     const output2 = document.getElementById('TT2Text');
     const output3 = document.getElementById('TT3Text');
     const output4 = document.getElementById('TT4Text');
-    const calIP1 = input1.value * await convertBUSDToTHB(1);
+    const calIP1 = input1.value;
     const calIP2 = input1.value / await convertBUSDToTHB(1);
     const calIP3 = calIP1 * 0.06;
-    const calIP4 = calIP1 + calIP3;
+    const calIP4 = parseFloat(calIP1) + parseFloat(calIP3);
     output1.innerText = `฿ ${calIP1.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     output2.innerText = `$ ${calIP2.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     output3.innerText = `฿ ${calIP3.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
