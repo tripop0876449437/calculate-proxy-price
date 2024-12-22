@@ -1,4 +1,4 @@
-function calculatePriceIPv4() {
+function calculateDatedIPv4() {
     // const numTotalVatInput = document.getElementById("totalIPv4");
     // const numIPsInput = document.getElementById("totalVat");
     const numDayInput = document.getElementById("quantityDay");
@@ -65,10 +65,7 @@ function calculatePriceIPv6() {
 function GenerateIPv4() {
     const TextDataIPsInput = document.getElementById("textIPv4");
     const lines = TextDataIPsInput.value.split('\n').map(line => line.trim()).filter(line => line);
-    const ipAddresses = [];
-    const protocols = {};
-    let login = '';
-    let password = '';
+    const ipAddresses = lines.filter(line => line.match(/^\d+\.\d+\.\d+\.\d+$/));
 
     let outputPatternIPv4 = `
     <div>
@@ -77,43 +74,70 @@ function GenerateIPv4() {
     </div>
     `;
 
-    lines.forEach(line => {
-        if (line.match(/^\d+\.\d+\.\d+\.\d+$/)) {
-            ipAddresses.push(line);
-        }
-        else if (line.match(/^[A-Z0-9]+\: \d+$/i)) {
-            const [protocol, port] = line.split(': ');
-            protocols[protocol] = port;
-        }
-        else if (line.match(/^Login\: .+$/i)) {
-            login = line.split(': ')[1];
-        }
-        else if (line.match(/^Password\: .+$/i)) {
-            password = line.split(': ')[1];
-        }
-        else if (line.match(/^Password\s.+$/i)) {
-            password = line.split(' ')[1];
-        }
-    })
+    let output = '';
+    output += `<p>HTTP(s): </p>`;
+    ipAddresses.forEach(ip => {
+        output += `<p>${ip}:51523:116wuyrj:xDWTrp3Z44</p>`;
+    });
 
-    let output = [];
-    for (const [protocol, port] of Object.entries(protocols)) {
-        // output += `<p>${protocol}: ${port}</p>`;
-        if (protocol == "SOCKS5") {
-            output += `<br>`
-        }
-        output += `<p>${protocol}: </p>`;
-        ipAddresses.forEach(ip => {
-            output += `<p>${ip}:${port}:${login}:${password}</p>`;
-        });
+    output += `<p>SOCKS5: </p>`;
+    ipAddresses.forEach(ip => {
+        output += `<p>${ip}:51524:116wuyrj:xDWTrp3Z44</p>`;
+    });
+
+    document.getElementById("informationIPv4").innerHTML = output;
+    document.getElementById("patternIPv4").innerHTML = outputPatternIPv4;
+}
+
+function GenerateIPv4Custom() {
+    const usernameElement = document.getElementById("username");
+    const passwordElement = document.getElementById("password");
+    const TextDataIPsInput = document.getElementById("textIPv4");
+
+    // ตรวจสอบว่า elements มีอยู่จริง
+    if (!usernameElement || !passwordElement) {
+        console.error("Cannot find username or password input elements");
+        return;
     }
+
+    const username = usernameElement.value;
+    const password = passwordElement.value;
+    
+    const lines = TextDataIPsInput.value.split('\n').map(line => line.trim()).filter(line => line);
+    const ipAddresses = lines.filter(line => line.match(/^\d+\.\d+\.\d+\.\d+$/));
+
+    let outputPatternIPv4 = `
+    <div>
+        <p>Pattern: </p>
+        <p>Server:Port:Username:Password</p>
+    </div>
+    `;
+
+    let output = '';
+    output += `<p>HTTP(s): </p>`;
+    ipAddresses.forEach(ip => {
+        output += `<p>${ip}:51523:${username}:${password}</p>`;
+    });
+
+    output += `<p>SOCKS5: </p>`;
+    ipAddresses.forEach(ip => {
+        output += `<p>${ip}:51524:${username}:${password}</p>`;
+    });
+
     document.getElementById("informationIPv4").innerHTML = output;
     document.getElementById("patternIPv4").innerHTML = outputPatternIPv4;
 }
 
 function calculateIPv4() {
-    calculatePriceIPv4()
-    GenerateIPv4()
+    let inputFormat = document.getElementById('customBtn').classList.contains('bg-[#8c52ff]') ? 'custom' : 'default';
+    
+    console.log("inputFormat: ", inputFormat);
+    if (inputFormat == 'default') {
+        GenerateIPv4()
+    } else if (inputFormat == 'custom') {
+        GenerateIPv4Custom()
+    }
+    calculateDatedIPv4()
 }
 
 function copyToClipboard() {
@@ -168,3 +192,20 @@ function copyToClipboardGenerateIPv4() {
     });
 }
 
+function selectFormat(format) {
+    if (format == 'default') {
+        document.getElementById('defaultBtn').classList.add('bg-[#8c52ff]');
+        document.getElementById('customBtn').classList.remove('bg-[#8c52ff]');
+        document.getElementById('inputFormat').style.display = 'none';
+        document.getElementById('textFormatTitle').style.display = 'none';
+        return 'default'
+    } else if (format == 'custom') {
+        document.getElementById('customBtn').classList.add('bg-[#8c52ff]');
+        document.getElementById('inputFormat').style.display = 'flex';
+        document.getElementById('textFormatTitle').style.display = 'flex';
+        document.getElementById('inputFormat').style.flexDirection = 'row';
+        document.getElementById('textFormatTitle').style.flexDirection = 'row';
+        return 'custom'
+    }
+}
+selectFormat('default')

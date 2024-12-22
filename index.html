@@ -58,6 +58,20 @@
                         class="bg-[#f8f5ff] w-full border-2 border-[#8c52ff] rounded-xl h-[200px] sm:h-[300px] p-10"></textarea>
                 </div>
                 <div class="w-full flex flex-col gap-2">
+                    <p class="text-bold">เลือกแบบฟอร์ม</p>
+                    <div class="flex flex-row gap-2 mb-4">
+                        <button id="defaultBtn" onclick="selectFormat('default')" class="bg-[#8c52ff] px-5 py-2 text-white text-md w-full rounded-lg hover:bg-[#7440e5] transition-all duration-200">Default</button>
+                        <button id="customBtn" onclick="selectFormat('custom')" class="bg-white border-2 border-[#8c52ff] px-5 py-2 text-[#8c52ff] text-md w-full rounded-lg hover:bg-[#f8f5ff] transition-all duration-200">Custom</button>
+                    </div>
+                    <div id="card-Format">
+                        <p id="textFormatTitle" class="text-bold">กรอกข้อมูล: username, password</p>
+                        <div id="inputFormat" class="flex flex-row gap-2 mt-2 mb-4">
+                            <input type="text" id="username" name="username" min="1" placeholder="username"
+                                class="bg-[#f8f5ff] w-full border-2 border-[#8c52ff] rounded-xl h-[50px] flex flex-col justify-center px-5">
+                            <input type="text" id="password" name="password" min="1" placeholder="password"
+                                class="bg-[#f8f5ff] w-full border-2 border-[#8c52ff] rounded-xl h-[50px] flex flex-col justify-center px-5">
+                        </div>
+                    </div>
                     <p class="text-bold">ใส่จำนวนวันหมดอายุ</p>
                     <div class="w-full flex flex-col gap-2 items-end">
                         <input type="number" id="quantityDay" name="quantityDay" min="1" placeholder="XX"
