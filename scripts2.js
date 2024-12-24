@@ -94,11 +94,7 @@ async function convertBUSDToTHB(BUSD) {
 
 function copyToClipboard(id) {
     let text = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(text.replace('$ ', '').replace('฿ ', '').replace(/,/g, '')).then(() => {
-        alert('ข้อมูลถูกคัดลอกเรียบร้อยแล้ว');
-    }).catch((err) => {
-        console.error('Error copying text to clipboard: ', err);
-    });
+    navigator.clipboard.writeText(text.replace('$ ', '').replace('฿ ', '').replace(/,/g, ''))
 }
 
 function copyToClipboardALL() {
@@ -111,11 +107,7 @@ function copyToClipboardALL() {
     });
 
     // Use the Clipboard API to copy the text
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
-    }, (err) => {
-        console.error('Error copying text to clipboard: ', err);
-    });
+    navigator.clipboard.writeText(textToCopy)
 }
 
 function copyToClipboardPattern() {
@@ -134,11 +126,7 @@ ${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${
     // });
 
     // Use the Clipboard API to copy the text
-    navigator.clipboard.writeText(patternNLM).then(() => {
-        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
-    }, (err) => {
-        console.error('Error copying text to clipboard: ', err);
-    });
+    navigator.clipboard.writeText(patternNLM)
 }
 
 // Example copy functions

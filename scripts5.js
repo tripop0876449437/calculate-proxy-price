@@ -102,9 +102,5 @@ function copyToTT1() {
     textElements.forEach((elem) => {
         textToCopy += elem.innerText + '\n';
     });
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
-    }, (err) => {
-        console.error('Error copying text to clipboard: ', err);
-    });
+    navigator.clipboard.writeText(textToCopy)
 }

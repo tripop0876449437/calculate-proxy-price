@@ -46,11 +46,7 @@ async function convertBUSDToTHB(BUSD) {
 
 function copyToClipboard(id) {
     let text = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(text.replace('$ ', '').replace('฿ ', '').replace(/,/g, '')).then(() => {
-        alert('ข้อมูลถูกคัดลอกเรียบร้อยแล้ว');
-    }).catch((err) => {
-        console.error('Error copying text to clipboard: ', err);
-    });
+    navigator.clipboard.writeText(text.replace('$ ', '').replace('฿ ', '').replace(/,/g, ''))
 }
 
 function copyToClipboardALL() {

@@ -27,6 +27,21 @@ function calculateDatedIPv4() {
     document.getElementById("vatText1").innerText = `${exp}`;
 }
 
+function calculatePriceVatIPv4() {
+    const numVatIPv4Text = document.getElementById("numVatIPv4Text");
+    const numPriceIPsInput = document.getElementById("priceFullIPv4");
+    const numIPsInput = document.getElementById("totalVatIPv4");
+    const totalVatIPv4Text = document.getElementById("totalVatIPv4Text");
+    const priceVatIPv4Text = document.getElementById("priceVatIPv4Text");
+    const vatVatIPv4Text = document.getElementById("vatVatIPv4Text");
+    const numIPs = numIPsInput.value;
+
+    numVatIPv4Text.innerText = `แจ้งยอดชำระ ${numIPsInput.value} IPs`;
+    priceVatIPv4Text.innerText = `ราคา IP = ${parseFloat(numPriceIPsInput.value - parseFloat(numPriceIPsInput.value * 0.07).toFixed(2)).toFixed(2)}฿`;
+    vatVatIPv4Text.innerText = `VAT 7% = ${parseFloat(numPriceIPsInput.value * 0.07).toFixed(2)}฿`;
+    totalVatIPv4Text.innerText = `ราคารวม VAT = ${parseFloat(numPriceIPsInput.value).toFixed(2)}฿`;
+}
+
 function calculatePriceIPv6() {
     const numIPsInput = document.getElementById("numIPv6");
     const numPriceIPsInput = document.getElementById("numPriceIPv6");
@@ -200,11 +215,7 @@ function copyToClipboard() {
     });
 
     // Use the Clipboard API to copy the text
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
-    }, (err) => {
-        console.error('Error copying text to clipboard: ', err);
-    });
+    navigator.clipboard.writeText(textToCopy)
 }
 
 function copyToClipboardIPv6() {
@@ -217,11 +228,24 @@ function copyToClipboardIPv6() {
     });
 
     // Use the Clipboard API to copy the text
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
-    }, (err) => {
-        console.error('Error copying text to clipboard: ', err);
+    navigator.clipboard.writeText(textToCopy)
+}
+
+function copyToClipboardVatIPv4() {
+    const totalDataElement = document.getElementById("informationVatPv4");
+    const textElements = totalDataElement.querySelectorAll('p');
+    let textToCopy = '';
+
+    textElements.forEach((elem) => {
+        textToCopy += elem.innerText + '\n';
     });
+
+    navigator.clipboard.writeText(textToCopy)
+    // navigator.clipboard.writeText(textToCopy).then(() => {
+    //     alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
+    // }, (err) => {
+    //     console.error('Error copying text to clipboard: ', err);
+    // });
 }
 
 function copyToClipboardGenerateIPv4() {
@@ -234,11 +258,7 @@ function copyToClipboardGenerateIPv4() {
     });
 
     // Use the Clipboard API to copy the text
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
-    }, (err) => {
-        console.error('Error copying text to clipboard: ', err);
-    });
+    navigator.clipboard.writeText(textToCopy)
 }
 
 function selectFormat(format) {

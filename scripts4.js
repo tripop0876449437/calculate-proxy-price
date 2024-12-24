@@ -30,11 +30,7 @@ function copyToClipboard(id) {
     });
 
     // Use the Clipboard API to copy the text
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        alert('ข้อมูลยอดที่ต้องชำระถูกคัดลอกไปยังคลิปบอร์ด');
-    }, (err) => {
-        console.error('Error copying text to clipboard: ', err);
-    });
+    navigator.clipboard.writeText(textToCopy)
 }
 
 function copyToTheo() {
