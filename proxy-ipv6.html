@@ -13,12 +13,14 @@
     <title>Proxy IPv6</title>
 </head>
 
-<body class="bg-[#ebf3fc] p-5 gap-5 sm:p-20 sm:gap-10 xl:gap-16 w-full mx-auto max-w-[1500px] h-full flex flex-col xl:flex xl:flex-row"
+<body
+    class="bg-[#ebf3fc] p-5 gap-5 sm:p-20 sm:gap-10 xl:gap-16 w-full mx-auto max-w-[1500px] h-full flex flex-col xl:flex xl:flex-row"
     style="font-family: 'Prompt', sans-serif; font-style: normal;">
     <button onclick="toggleMenu()" class="sm:hidden bg-sky-400 text-white font-bold p-2 rounded-md">
         <img src="/Img/list.svg" alt="">
     </button>
-    <div id="sideMenu" class="xl:max-w-[230px] w-full h-full flex flex-row xl:flex xl:flex-col sm:flex flex-wrap sm:flex-nowrap gap-1 gap-1 sm:gap-1 md:gap-1 lg:gap-1 hidden">
+    <div id="sideMenu"
+        class="xl:max-w-[230px] w-full h-full flex flex-row xl:flex xl:flex-col sm:flex flex-wrap sm:flex-nowrap gap-1 gap-1 sm:gap-1 md:gap-1 lg:gap-1 hidden">
         <a href="/index.html"
             class="bg-white hover:bg-gray-100 w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl transition duration-300">
             ProxyV4
@@ -43,6 +45,10 @@
             class="bg-white hover:bg-gray-100 w-full text-center text-3xl text-black border-2 border-gray-400 rounded-2xl p-2 text-[15px] sm:text-xl md:text-2xl lg:text-2xl transition duration-300">
             Theoadv
         </a>
+        <button onclick="logout()"
+            class="bg-red-600 text-white mt-10 py-2 px-4 rounded-lg hover:bg-red-700 transition duration-300">
+            Logout
+        </button>
     </div>
     <div class="bg-white border-[5px] sm:border-[10px] border-[#ff914d] w-full max-h-[1300px] rounded-3xl p-7 sm:p-10">
         <div class="flex flex-col gap-2 mt-2 sm:mt-0">
@@ -50,7 +56,7 @@
                 <div class="flex flex-row mb-2">
                     <p class="w-full text-4xl sm:text-5xl font-bold ">IPv6</p>
                     <button onclick="calculatePriceIPv6()"
-                    class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-3 text-white text-xl xl:text-2xl h-[50px] xl:h-[60px] font-bold rounded-lg hover:shadow-lg hover:shadow-[#ff914d]/50 hover:scale-105 transition-all duration-200">Calculate</button>
+                        class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-3 text-white text-xl xl:text-2xl h-[50px] xl:h-[60px] font-bold rounded-lg hover:shadow-lg hover:shadow-[#ff914d]/50 hover:scale-105 transition-all duration-200">Calculate</button>
                 </div>
                 <div class="w-full flex flex-col sm:flex-row gap-2 mb-2">
                     <div class="w-full flex flex-col gap-2">
@@ -82,40 +88,43 @@
             <div class="border-2 border-[#4d91ff] bg-[#f5f9ff] rounded-xl p-7 sm:p-10">
                 <div class="w-full flex flex-col gap-2">
                     <div class="flex flex-row justify-between">
-                    <p class="text-bold text-xl md:text-4xl">แยกยอดชำระเงิน</p>
-                    <button onclick="calculatePriceVatIPv4()"
-                    class="bg-gradient-to-r from-[#3157ff] to-[#4d91ff] px-3 text-white text-xl xl:text-2xl h-[50px] xl:h-[60px] font-bold rounded-lg hover:shadow-lg hover:shadow-[#4d91ff]/50 hover:scale-105 transition-all duration-200">Calculate</button>
-                </div>
-                <div class="w-full flex flex-row gap-2">
-                    <div class="w-full flex flex-col gap-2">
-                        <p>ใส่จำนวน IPs</p>
-                        <input type="number" id="totalVatIPv4" name="numSplitIPv4" min="1" placeholder="XX"
-                        class="bg-[#e3edff] w-full border-2 border-[#4d91ff] rounded-xl h-[50px] flex flex-col justify-center px-5">
+                        <p class="text-bold text-xl md:text-4xl">แยกยอดชำระเงิน</p>
+                        <button onclick="calculatePriceVatIPv4()"
+                            class="bg-gradient-to-r from-[#3157ff] to-[#4d91ff] px-3 text-white text-xl xl:text-2xl h-[50px] xl:h-[60px] font-bold rounded-lg hover:shadow-lg hover:shadow-[#4d91ff]/50 hover:scale-105 transition-all duration-200">Calculate</button>
                     </div>
-                    <div class="w-full flex flex-col gap-2">
-                        <p>ใส่ราคาเต็ม IPs</p>
-                        <input type="number" id="priceFullIPv4" name="priceFullIPv4" min="1" placeholder="XX"
-                        class="bg-[#e3edff] w-full border-2 border-[#4d91ff] rounded-xl h-[50px] flex flex-col justify-center px-5">
+                    <div class="w-full flex flex-row gap-2">
+                        <div class="w-full flex flex-col gap-2">
+                            <p>ใส่จำนวน IPs</p>
+                            <input type="number" id="totalVatIPv4" name="numSplitIPv4" min="1" placeholder="XX"
+                                class="bg-[#e3edff] w-full border-2 border-[#4d91ff] rounded-xl h-[50px] flex flex-col justify-center px-5">
+                        </div>
+                        <div class="w-full flex flex-col gap-2">
+                            <p>ใส่ราคาเต็ม IPs</p>
+                            <input type="number" id="priceFullIPv4" name="priceFullIPv4" min="1" placeholder="XX"
+                                class="bg-[#e3edff] w-full border-2 border-[#4d91ff] rounded-xl h-[50px] flex flex-col justify-center px-5">
+                        </div>
                     </div>
-                </div>
-                <div id="informationVatPv4" class="flex flex-col sm:flex-col gap-2 w-full items-end">
-                    <div id="totalDataVatPv4" class="bg-white w-full border-2 border-[#4d91ff] rounded-xl p-7 sm:p-10"
-                    style="max-height: 350px; overflow-y: auto;">
-                        <p id="numVatIPv4Text" class="text-lg font-bold">แจ้งยอดชำระ XX IPs</p>
-                        <p id="priceVatIPv4Text" class="mt-2">ราคา IP = XXX฿</p>
-                        <p id="vatVatIPv4Text" class="mt-2">VAT 7% = XX.XX฿</p>
-                        <p class="">--------------------------------------</p>
-                        <p id="totalVatIPv4Text" class="mt-2">ราคารวม VAT = XXX.XX฿</p>
+                    <div id="informationVatPv4" class="flex flex-col sm:flex-col gap-2 w-full items-end">
+                        <div id="totalDataVatPv4"
+                            class="bg-white w-full border-2 border-[#4d91ff] rounded-xl p-7 sm:p-10"
+                            style="max-height: 350px; overflow-y: auto;">
+                            <p id="numVatIPv4Text" class="text-lg font-bold">แจ้งยอดชำระ XX IPs</p>
+                            <p id="priceVatIPv4Text" class="mt-2">ราคา IP = XXX฿</p>
+                            <p id="vatVatIPv4Text" class="mt-2">VAT 7% = XX.XX฿</p>
+                            <p class="">--------------------------------------</p>
+                            <p id="totalVatIPv4Text" class="mt-2">ราคารวม VAT = XXX.XX฿</p>
+                        </div>
+                        <button onclick="copyToClipboardVatIPv4()"
+                            class="bg-sky-400 px-5 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-sky-400/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
                     </div>
-                    <button onclick="copyToClipboardVatIPv4()"
-                    class="bg-sky-400 px-5 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-sky-400/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
                 </div>
             </div>
+            <img src="/Img/logoProxy2.png" alt="" srcset="" width="30%" class="opacity-80">
         </div>
-        <img src="/Img/logoProxy2.png" alt="" srcset="" width="30%" class="opacity-80">
     </div>
     <script src="/scripts.js"></script>
     <script src="/scriptsRSP.js"></script>
+    <script src="login.js"></script>
 </body>
 
 </html>

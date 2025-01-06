@@ -20,14 +20,21 @@
     <nav class="bg-gray-800 p-4 shadow-lg">
         <div class="container mx-auto flex justify-center items-center">
             <div class="flex items-center gap-2">
-                <a href="index.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-semibold">Proxy</a>
-                <a href="no-limit.html" class="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-md font-semibold">FB Nolimit</a>
+                <a href="index.html"
+                    class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-semibold">Proxy</a>
+                <a href="no-limit.html"
+                    class="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-md font-semibold">FB
+                    Nolimit</a>
+                <button onclick="logout()"
+                    class="bg-red-600 text-white mt-10 py-2 px-4 rounded-lg hover:bg-red-700 transition duration-300">
+                    Logout
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Calcultion IPv6 -->
-    <div  class="flex justify-center items-center h-screen bg-gray-900 gap-10" bis_skin_checked="1">
+    <div class="flex justify-center items-center h-screen bg-gray-900 gap-10" bis_skin_checked="1">
         <div class="p-6 bg-gray-800 backdrop-blur-lg border border-gray-700 rounded-lg shadow-xl" bis_skin_checked="2">
             <h2 class="text-2xl font-bold border-b border-gray-700 pb-3 text-white text-center">IPv6</h2>
             <h2 class="text-xl font-bold border-b border-gray-700 py-3 text-white">Proxy Price Calculator</h2>
@@ -45,7 +52,8 @@
                 <button onclick="calculatePriceIPv6()"
                     class="px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 rounded-md text-white font-semibold shadow">Calculate</button>
             </div>
-            <div id="totalDataIPv6" class="mt-6 text-white border border-gray-600 rounded-[5px] p-2" bis_skin_checked="2">
+            <div id="totalDataIPv6" class="mt-6 text-white border border-gray-600 rounded-[5px] p-2"
+                bis_skin_checked="2">
                 <p id="numIPv6Text" class="text-lg font-semibold">แจ้งยอดชำระ XX IPs</p>
                 <p id="priceIPv6Text" class="mt-2">ราคา IP = XXX฿</p>
                 <p id="vatIPv6Text" class="mt-2">VAT 7% = XX.XX฿</p>
@@ -55,14 +63,15 @@
             <button onclick="copyToClipboardIPv6()"
                 class="px-2 py-1 bg-green-500 mt-5 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded text-white font-semibold shadow">COPY</button>
         </div>
-    
+
         <!-- Generate IPv4 -->
         <div class="p-6 bg-stone-800 backdrop-blur-lg border border-stone-700 rounded-lg shadow-xl w-[1000px] relative"
             bis_skin_checked="3">
             <h2 class="text-2xl font-bold border-b border-stone-700 pb-3 text-white text-center">IPv4</h2>
             <h2 class="text-xl font-bold border-b border-stone-700 py-3 text-white">Proxy IPv4 Generate</h2>
             <div class="mt-4" bis_skin_checked="3">
-                <label for="textIPv4" class="block text-stone-400 font-semibold">ใส่ข้อมูล IPv4 ที่ยังไม่ได้เรียง</label>
+                <label for="textIPv4" class="block text-stone-400 font-semibold">ใส่ข้อมูล IPv4
+                    ที่ยังไม่ได้เรียง</label>
                 <textarea id="textIPv4" name="textIPv4" min="1" rows="10"
                     class="mt-1 p-2 w-full rounded-md bg-stone-700 text-white outline-none border border-stone-600 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
                 </textarea>
@@ -108,7 +117,7 @@
     </div>
 
     <script src="/scripts.js"></script>
-
+    <script src="login.js"></script>
 
 </body>
 
