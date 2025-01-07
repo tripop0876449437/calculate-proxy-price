@@ -154,7 +154,10 @@ function copyToClipboardALL2() {
 function copyToClipboardPattern() {
     const FB1Float = parseFloat(document.getElementById("fb1").value);
     const FB2Float = parseFloat(document.getElementById("fb2").value);
-    const formattedAmount = parseFloat(FB6Texts.replace(/,/g, '')).toLocaleString(undefined, {
+    // แปลงเป็นตัวเลข ปัดขึ้นที่ทศนิยมตำแหน่งที่ 2 และจัดรูปแบบให้มีคอมม่า
+    const amount = parseFloat(FB6Texts.replace(/,/g, ''));
+    const roundedAmount = Math.ceil(amount * 100) / 100;
+    const formattedAmount = roundedAmount.toLocaleString(undefined, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     });
@@ -168,7 +171,10 @@ ${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${
 function copyToClipboardPattern2() {
     const FB1Float = parseFloat(document.getElementById("fb1").value);
     const FB2Float = parseFloat(document.getElementById("fb2").value);
-    const formattedAmount = parseFloat(FB6Texts2.replace(/,/g, '')).toLocaleString(undefined, {
+    // แปลงเป็นตัวเลข ปัดขึ้นที่ทศนิยมตำแหน่งที่ 2 และจัดรูปแบบให้มีคอมม่า
+    const amount = parseFloat(FB6Texts2.replace(/,/g, ''));
+    const roundedAmount = Math.ceil(amount * 100) / 100;
+    const formattedAmount = roundedAmount.toLocaleString(undefined, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     });
