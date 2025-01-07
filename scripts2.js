@@ -152,31 +152,30 @@ function copyToClipboardALL2() {
 }
 
 function copyToClipboardPattern() {
-    // const totalDataElement = document.getElementById("totalDataFB1");
-    // const textElements = totalDataElement.querySelectorAll('p');
     const FB1Float = parseFloat(document.getElementById("fb1").value);
     const FB2Float = parseFloat(document.getElementById("fb2").value);
-    // const FB2Float = parseFloat(document.getElementById("fb2").value);
-    let textToCopy = '';
+    const formattedAmount = parseFloat(FB6Texts.replace(/,/g, '')).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
     let patternNLM = `ลูกค้าจะได้รับเงินในบัญชีโฆษณา ${FB1Float} USD
 ${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${FB1Texts}$
-ยอดชำระ ${FB6Texts} บาทค่ะ`;
+ยอดชำระ ${formattedAmount} บาทค่ะ`;
 
     // Use the Clipboard API to copy the text
     navigator.clipboard.writeText(patternNLM)
 }
 function copyToClipboardPattern2() {
-    // const totalDataElement = document.getElementById("totalDataFB1");
-    // const textElements = totalDataElement.querySelectorAll('p');
     const FB1Float = parseFloat(document.getElementById("fb1").value);
     const FB2Float = parseFloat(document.getElementById("fb2").value);
-    // const FB2Float = parseFloat(document.getElementById("fb2").value);
-    let textToCopy = '';
+    const formattedAmount = parseFloat(FB6Texts2.replace(/,/g, '')).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
     let patternNLM = `ลูกค้าจะได้รับเงินในบัญชีโฆษณา ${FB1Float} USD
 ${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${FB1Texts}$
-ยอดชำระ ${FB6Texts2} บาทค่ะ`;
+ยอดชำระ ${formattedAmount} บาทค่ะ`;
 
-    // Use the Clipboard API to copy the text
     navigator.clipboard.writeText(patternNLM)
 }
 
