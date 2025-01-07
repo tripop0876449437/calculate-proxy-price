@@ -71,11 +71,12 @@
                 </div>
             </div>
             <div id="informationIPv4Full"
-                class="flex flex-col gap-5 sm:flex-row w-full max-w-[560px] items-end h-full max-h-[700px] mt-2 mb-5 sm:my-8 mx-auto ">
+                class="flex flex-col sm:flex-row xl:flex-row gap-5 sm:flex-row w-full max-w-[900px] items-end h-full mt-2 mb-5 sm:my-8 mx-auto ">
                 <div class="flex flex-col gap-1 sm:gap-5 mx-auto w-full max-w-[560px]">
                     <div class="flex flex-row gap-5 mx-auto w-full max-w-[560px]">
                         <div id="totalDataFB1"
-                            class="bg-white w-full border-2 border-[#004aad] rounded-[30px] max-h-[480px] sm:max-h-[500px] p-5" style="overflow-y: auto;">
+                            class="bg-white w-full border-2 border-[#004aad] rounded-[30px] max-h-[480px sm:max-h-[500px] p-5" style="overflow-y: auto;">
+                            <h1 class="text-2xl font-bold text-center mb-5 text-[#004aad]">สำหรับลูกค้าโอนเงิน THB <span id="moneyPayTHB"></span></h1>
                             <p id="" class="text-sm sm:text-lg font-semibold mb-3">ยอดที่ลูกค้าต้องโอนให้เรา (ค่าบริการ กี่%)</p>
                             <p id="FB1Text" class="text-md sm:text-lg">$ XXX.XX</p>
                             <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Profit Fee (เหลือกำไร กี่%)</p>
@@ -89,7 +90,7 @@
                             <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">ยอดที่ลูกค้าต้องโอนให้เราเป็นบาท</p>
                             <p id="FB6Text" class="text-md sm:text-lg">฿ XXX.XX</p>
                         </div>
-                        <div class="flex flex-col justify-center gap-8 h-[500px] max-h-[500px] sm:pt-5">
+                        <!-- <div class="flex flex-col justify-center gap-8 h-[500px] max-h-[500px] sm:pt-5">
                             <button onclick="copyToFB1()"
                                 class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
                             <button onclick="copyToFB2()"
@@ -102,12 +103,52 @@
                                 class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
                             <button onclick="copyToFB6()"
                                 class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="flex flex-row w-full gap-5">
                         <button onclick="copyToClipboardPattern()"
                             class="bg-gradient-to-r from-[#5170ff] to-[#ff914d] px-5 py-3 text-white text-lg w-full sm:max-w-[140px] max-h-[60px] rounded-xl hover:shadow-lg hover:shadow-[#ff914d]/50 hover:scale-105 transition-all duration-200">CopyPattern</button>
                         <button onclick="copyToClipboardALL()"
+                            class="bg-gradient-to-r from-[#0097b2] to-[#7ed957] px-5 py-3 text-white text-lg w-full sm:max-w-[140px] max-h-[60px] rounded-xl hover:shadow-lg hover:shadow-[#7ed957]/50 hover:scale-105 transition-all duration-200">CopyAll</button>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 sm:gap-5 mx-auto w-full max-w-[560px]">
+                    <div class="flex flex-row gap-5 mx-auto w-full max-w-[560px]">
+                        <div id="totalDataFB2"
+                            class="bg-white w-full border-2 border-[#004aad] rounded-[30px] max-h-[480px] sm:max-h-[500px] p-5" style="overflow-y: auto;">
+                            <h1 class="text-2xl font-bold text-center mb-5 text-[#004aad]">สำหรับลูกค้าโอนเงิน USD <span id="moneyPayBUSD"></span></h1>
+                            <p id="" class="text-sm sm:text-lg font-semibold mb-3">ยอดที่ลูกค้าต้องโอนให้เรา (ค่าบริการ กี่%)</p>
+                            <p id="FB1Text2" class="text-md sm:text-lg">$ XXX.XX</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Profit Fee (เหลือกำไร กี่%)</p>
+                            <p id="FB2Text2" class="text-md sm:text-lg">XX.XX%</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Total Profit (เหลือกำไรกี่บาท)</p>
+                            <p id="FB3Text2" class="text-md sm:text-lg">$ XXX.XX</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Part Profit (ต้องแบ่งกำไรกับเขาเท่าไหร่)</p>
+                            <p id="FB4Text2" class="text-md sm:text-lg">$ XXX.XX</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">Paid for Nolimit (ที่ต้องจ่ายให้ FB)</p>
+                            <p id="FB5Text2" class="text-md sm:text-lg">$ XXX.XX</p>
+                            <p id="" class="text-sm sm:text-lg font-semibold my-2 sm:my-3">ยอดที่ลูกค้าต้องโอนให้เราเป็นบาท</p>
+                            <p id="FB6Text2" class="text-md sm:text-lg">฿ XXX.XX</p>
+                        </div>
+                        <!-- <div class="flex flex-col justify-center gap-8 h-[500px] max-h-[500px] sm:pt-5">
+                            <button onclick="copyToFB1()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
+                            <button onclick="copyToFB2()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
+                            <button onclick="copyToFB3()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
+                            <button onclick="copyToFB4()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
+                            <button onclick="copyToFB5()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
+                            <button onclick="copyToFB6()"
+                                class="bg-gradient-to-r from-[#ff3131] to-[#ff914d] px-5 sm:px-8 py-2 text-white text-md w-full sm:max-w-[100px] max-h-[40px] hover:shadow-lg hover:shadow-[#ff914d]/50 hover:-translate-y-1 transition-all duration-200">Copy</button>
+                        </div> -->
+                    </div>
+                    <div class="flex flex-row w-full gap-5">
+                        <button onclick="copyToClipboardPattern2()"
+                            class="bg-gradient-to-r from-[#5170ff] to-[#ff914d] px-5 py-3 text-white text-lg w-full sm:max-w-[140px] max-h-[60px] rounded-xl hover:shadow-lg hover:shadow-[#ff914d]/50 hover:scale-105 transition-all duration-200">CopyPattern</button>
+                        <button onclick="copyToClipboardALL2()"
                             class="bg-gradient-to-r from-[#0097b2] to-[#7ed957] px-5 py-3 text-white text-lg w-full sm:max-w-[140px] max-h-[60px] rounded-xl hover:shadow-lg hover:shadow-[#7ed957]/50 hover:scale-105 transition-all duration-200">CopyAll</button>
                     </div>
                 </div>
