@@ -46,10 +46,18 @@ async function calculate4P() {
     FB5Texts2 = calculationsUSD.FB5Text;
     FB6Texts2 = parseFloat(calculationsUSD.FB6Text).toLocaleString(undefined, { minimumFractionDigits: 5, maximumFractionDigits: 5 });
 
+    console.log(FB6Texts);
+    console.log(FB6Texts2);
+    
+
 
     const format = num => {
         const number = parseFloat(num);
-        const formatted = number.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 5 });
+        const roundedNumber = Math.ceil(number * 100) / 100;
+        const formatted = roundedNumber.toLocaleString(undefined, { 
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2 
+        });
         return formatted.replace(/\.?0+$/, ''); // Remove trailing zeros after decimal
     };
 
@@ -72,7 +80,11 @@ async function calculate4P() {
     });
     const format2 = num => {
         const number = parseFloat(num);
-        const formatted = number.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 5 });
+        const roundedNumber = Math.ceil(number * 100) / 100;
+        const formatted = roundedNumber.toLocaleString(undefined, { 
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2 
+        });
         return formatted.replace(/\.?0+$/, ''); // Remove trailing zeros after decimal
     };
 
