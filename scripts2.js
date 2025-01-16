@@ -164,23 +164,23 @@ function copyToClipboardALL2() {
     navigator.clipboard.writeText(textToCopy)
 }
 
-function copyToClipboardPattern() {
-    const FB1Float = parseFloat(document.getElementById("fb1").value);
-    const FB2Float = parseFloat(document.getElementById("fb2").value);
-    // แปลงเป็นตัวเลข ปัดขึ้นที่ทศนิยมตำแหน่งที่ 2 และจัดรูปแบบให้มีคอมม่า
-    const amount = parseFloat(FB6Texts.replace(/,/g, ''));
-    const roundedAmount = Math.ceil(amount * 100) / 100;
-    const formattedAmount = roundedAmount.toLocaleString(undefined, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-    let patternNLM = `ลูกค้าจะได้รับเงินในบัญชีโฆษณา ${FB1Float} USD
-${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${FB1Texts}$
-ยอดชำระ ${formattedAmount} บาทค่ะ`;
+// function copyToClipboardPattern() {
+//     const FB1Float = parseFloat(document.getElementById("fb1").value);
+//     const FB2Float = parseFloat(document.getElementById("fb2").value);
+//     // แปลงเป็นตัวเลข ปัดขึ้นที่ทศนิยมตำแหน่งที่ 2 และจัดรูปแบบให้มีคอมม่า
+//     const amount = parseFloat(FB6Texts.replace(/,/g, ''));
+//     const roundedAmount = Math.ceil(amount * 100) / 100;
+//     const formattedAmount = roundedAmount.toLocaleString(undefined, {
+//         minimumFractionDigits: 2,
+//         maximumFractionDigits: 2
+//     });
+//     let patternNLM = `ลูกค้าจะได้รับเงินในบัญชีโฆษณา ${FB1Float} USD
+// ${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${FB1Texts}$
+// ยอดชำระ ${formattedAmount} บาทค่ะ`;
 
-    // Use the Clipboard API to copy the text
-    navigator.clipboard.writeText(patternNLM)
-}
+//     // Use the Clipboard API to copy the text
+//     navigator.clipboard.writeText(patternNLM)
+// }
 function copyToClipboardPattern2() {
     const FB1Float = parseFloat(document.getElementById("fb1").value);
     const FB2Float = parseFloat(document.getElementById("fb2").value);
@@ -192,7 +192,7 @@ function copyToClipboardPattern2() {
         maximumFractionDigits: 2
     });
     let patternNLM = `ลูกค้าจะได้รับเงินในบัญชีโฆษณา ${FB1Float} USD
-${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${FB1Texts}$
+${FB1Float}$ + ${(FB1Float * FB2Float / 100)}$(ค่าบริการ) = ${FB1Texts2}$
 ยอดชำระ ${formattedAmount} บาทค่ะ`;
 
     navigator.clipboard.writeText(patternNLM)
