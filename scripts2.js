@@ -99,9 +99,10 @@ async function calculate4P() {
         if (id === "FB2Text2") {
             formattedText = `${format2(calculationsUSD[id])} %`;
         }
-
+        console.log("id", id);
+        
         // Add THB symbol for FB6Text
-        if (id === "FB6Text2") {
+        if (id === "FB6Text") {
             formattedText = `฿ ${format2(calculationsUSD[id])}`;
         }
 
