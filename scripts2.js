@@ -17,14 +17,14 @@ async function calculate4P() {
         return;
     }
 
-    const calculations = {
-        FB1Text: ((FB1Float * FB2Float / 100) + FB1Float).toFixed(2),
-        FB2Text: (FB2Float - Mbank).toFixed(2),
-        FB3Text: (FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2),
-        FB4Text: (((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2),
-        FB5Text: (((FB1Float * FB2Float / 100) + FB1Float).toFixed(2)) - ((((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2)),
-        FB6Text: ''
-    };
+    // const calculations = {
+    //     FB1Text: ((FB1Float * FB2Float / 100) + FB1Float).toFixed(2),
+    //     FB2Text: (FB2Float - Mbank).toFixed(2),
+    //     FB3Text: (FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2),
+    //     FB4Text: (((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2),
+    //     FB5Text: (((FB1Float * FB2Float / 100) + FB1Float).toFixed(2)) - ((((FB1Float * ((FB2Float - Mbank) / 100)).toFixed(2)) / 2).toFixed(2)),
+    //     FB6Text: ''
+    // };
     const calculationsUSD = {
         FB1Text: ((FB1Float * FB2Float / 100) + FB1Float).toFixed(2),
         FB2Text: (FB2Float - Mbank).toFixed(2),
@@ -37,47 +37,48 @@ async function calculate4P() {
     // Convert FB5Text (BUSD) to THB
     // calculations.FB6Text = await convertBUSDToTHB(calculations.FB1Text);
     // calculations.FB6Text = (await convertBUSDToTHB(1))* calculations.FB1Text;
-    calculations.FB6Text = (await MoneyPayTHB())* calculations.FB1Text;
-    FB1Texts = calculations.FB1Text;
-    FB5Texts = calculations.FB5Text;
-    FB6Texts = parseFloat(calculations.FB6Text).toLocaleString(undefined, { minimumFractionDigits: 5, maximumFractionDigits: 5 });
+
+    // calculations.FB6Text = (await MoneyPayTHB())* calculations.FB1Text;
+    // FB1Texts = calculations.FB1Text;
+    // FB5Texts = calculations.FB5Text;
+    // FB6Texts = parseFloat(calculations.FB6Text).toLocaleString(undefined, { minimumFractionDigits: 5, maximumFractionDigits: 5 });
     calculationsUSD.FB6Text = (await MoneyPayBUSD())* calculationsUSD.FB1Text;
     FB1Texts2 = calculationsUSD.FB1Text;
     FB5Texts2 = calculationsUSD.FB5Text;
     FB6Texts2 = parseFloat(calculationsUSD.FB6Text).toLocaleString(undefined, { minimumFractionDigits: 5, maximumFractionDigits: 5 });
 
-    console.log(FB6Texts);
-    console.log(FB6Texts2);
+    // console.log(FB6Texts);
+    // console.log(FB6Texts2);
     
 
 
-    const format = num => {
-        const number = parseFloat(num);
-        const roundedNumber = Math.ceil(number * 100) / 100;
-        const formatted = roundedNumber.toLocaleString(undefined, { 
-            minimumFractionDigits: 2, 
-            maximumFractionDigits: 2 
-        });
-        return formatted.replace(/\.?0+$/, ''); // Remove trailing zeros after decimal
-    };
+    // const format = num => {
+    //     const number = parseFloat(num);
+    //     const roundedNumber = Math.ceil(number * 100) / 100;
+    //     const formatted = roundedNumber.toLocaleString(undefined, { 
+    //         minimumFractionDigits: 2, 
+    //         maximumFractionDigits: 2 
+    //     });
+    //     return formatted.replace(/\.?0+$/, ''); // Remove trailing zeros after decimal
+    // };
 
-    Object.keys(calculations).forEach(id => {
-        let symbol = "$ ";
-        let formattedText = `${symbol}${format(calculations[id])}`;
+    // Object.keys(calculations).forEach(id => {
+    //     let symbol = "$ ";
+    //     let formattedText = `${symbol}${format(calculations[id])}`;
 
-        // Add % symbol after FB2Text
-        if (id === "FB2Text") {
-            formattedText = `${format(calculations[id])} %`;
-        }
+    //     // Add % symbol after FB2Text
+    //     if (id === "FB2Text") {
+    //         formattedText = `${format(calculations[id])} %`;
+    //     }
 
-        // Add THB symbol for FB6Text
-        if (id === "FB6Text") {
-            formattedText = `฿ ${format(calculations[id])}`;
-        }
+    //     // Add THB symbol for FB6Text
+    //     if (id === "FB6Text") {
+    //         formattedText = `฿ ${format(calculations[id])}`;
+    //     }
 
-        // Display the calculated values
-        document.getElementById(id).innerText = formattedText;
-    });
+    //     // Display the calculated values
+    //     document.getElementById(id).innerText = formattedText;
+    // });
     const format2 = num => {
         const number = parseFloat(num);
         const roundedNumber = Math.ceil(number * 100) / 100;
